@@ -6,96 +6,96 @@
 <title>Monitor Electoral en Salud v3 | AFIDRO</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@400;600;700&display=swap');
-:root{--bg:#f0f4ff;--card:#fff;--card-hover:#f8faff;--elevated:#f5f7fc;--border:#e2e8f0;--text:#1f2937;--muted:#5a6477;--dim:#8b93a3;--primary:#2c5aa0;--plight:rgba(44,90,160,.08);--izq:#dc2626;--cizq:#ea580c;--cder:#2c5aa0;--der:#7c3aed;--green:#10b981;--yellow:#f59e0b;--red:#ef4444;--radius:12px;--shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.04);}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+:root{--bg:#f2f4f8;--card:#ffffff;--card-hover:#f8f9fc;--elevated:#ebeef4;--border:#dce0e8;--text:#1a2444;--muted:#4a5575;--dim:#7b839a;--primary:#1a2444;--accent:#e8734a;--accent-light:rgba(232,115,74,.08);--plight:rgba(26,36,68,.04);--izq:#c92a2a;--cizq:#d4600a;--cder:#1a2444;--der:#6e40c9;--green:#0d9668;--yellow:#d49a08;--red:#d63030;--radius:8px;--shadow:0 1px 2px rgba(26,36,68,.04),0 2px 8px rgba(26,36,68,.03);--shadow-lg:0 4px 20px rgba(26,36,68,.07);--font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-.hdr{padding:16px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.06);}
-.hdr-brand{display:flex;align-items:center;gap:14px;}
-.hdr-logo{width:36px;height:36px;background:linear-gradient(135deg,var(--primary),#4c7fc4);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;transition:transform .3s;animation:countUp .6s cubic-bezier(.22,1,.36,1);}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:13px;line-height:1.5;}
+.hdr{padding:14px 32px;border-bottom:none;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;background:var(--primary);box-shadow:0 2px 12px rgba(26,36,68,.15);}
+.hdr-brand{display:flex;align-items:center;gap:12px;}
+.hdr-logo{width:32px;height:32px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;color:#fff;letter-spacing:1px;transition:transform .3s;animation:countUp .6s cubic-bezier(.22,1,.36,1);}
 .hdr-logo:hover{transform:rotate(5deg) scale(1.05);}
-.hdr h1{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--primary);}
-.hdr h1 span{color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;margin-left:10px;}
-.hdr-meta{font-size:11px;color:var(--dim);}
-.hdr-meta .badge{background:var(--plight);color:var(--primary);padding:3px 9px;border-radius:20px;font-weight:500;border:1px solid rgba(44,90,160,.15);margin-left:8px;}
-.nav{display:flex;gap:2px;padding:10px 28px;border-bottom:1px solid var(--border);background:#fff;overflow-x:auto;}
-.nav button{background:none;border:none;color:var(--muted);padding:9px 16px;font-size:12px;font-weight:500;cursor:pointer;border-radius:8px;transition:all .25s cubic-bezier(.22,1,.36,1);white-space:nowrap;font-family:inherit;position:relative;}
-.nav button:hover{color:var(--text);background:var(--bg);transform:translateY(-1px);}
-.nav button.active{color:var(--primary);background:var(--plight);font-weight:600;box-shadow:0 2px 8px rgba(44,90,160,.1);}
-.sec{display:none;padding:24px 28px;max-width:1440px;margin:0 auto;}
+.hdr h1{font-family:var(--font);font-size:14px;font-weight:700;color:#fff;letter-spacing:-.1px;}
+.hdr h1 span{color:rgba(255,255,255,.5);font-size:11px;font-weight:400;margin-left:10px;letter-spacing:0;}
+.hdr-meta{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.2px;}
+.hdr-meta .badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:3px 10px;border-radius:20px;font-weight:600;font-size:9px;text-transform:uppercase;letter-spacing:.5px;border:1px solid rgba(255,255,255,.15);margin-left:8px;}
+.nav{display:flex;gap:0;padding:0 32px;border-bottom:1px solid var(--border);background:#fff;overflow-x:auto;}
+.nav button{background:none;border:none;color:var(--dim);padding:13px 18px;font-size:11.5px;font-weight:500;cursor:pointer;border-radius:0;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;font-family:var(--font);letter-spacing:.1px;position:relative;}
+.nav button:hover{color:var(--text);background:rgba(26,36,68,.02);}
+.nav button.active{color:var(--accent);font-weight:700;border-bottom-color:var(--accent);}
+.sec{display:none;padding:28px 32px;max-width:1440px;margin:0 auto;}
 .sec.active{display:block;animation:secIn .4s cubic-bezier(.22,1,.36,1);}
 @keyframes secIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 @keyframes cardIn{from{opacity:0;transform:translateY(16px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 @keyframes countUp{from{opacity:0;transform:scale(.8);}to{opacity:1;transform:scale(1);}}
 @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
-.stitle{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;margin-bottom:4px;color:var(--primary);}
-.ssub{color:var(--muted);font-size:13px;margin-bottom:24px;max-width:700px;line-height:1.5;}
-.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:28px;}
-.st{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);animation:countUp .5s cubic-bezier(.22,1,.36,1) both;}
+.stitle{font-family:var(--font);font-size:22px;font-weight:800;margin-bottom:6px;color:var(--text);letter-spacing:-.4px;}
+.ssub{color:var(--muted);font-size:12.5px;margin-bottom:28px;max-width:680px;line-height:1.65;font-weight:400;}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:28px;}
+.st{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);animation:countUp .5s cubic-bezier(.22,1,.36,1) both;}
 .st:nth-child(1){animation-delay:.05s;}.st:nth-child(2){animation-delay:.1s;}.st:nth-child(3){animation-delay:.15s;}.st:nth-child(4){animation-delay:.2s;}
-.st .lb{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
-.st .vl{font-size:26px;font-weight:700;font-family:'Playfair Display',serif;color:var(--primary);}
-.st .dt{font-size:11px;color:var(--muted);margin-top:3px;}
-.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;}
-.cc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;cursor:pointer;transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;box-shadow:var(--shadow);animation:cardIn .5s cubic-bezier(.22,1,.36,1) both;}
+.st .lb{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;font-weight:500;}
+.st .vl{font-size:22px;font-weight:800;font-family:var(--font);color:var(--primary);letter-spacing:-.3px;}
+.st .dt{font-size:10.5px;color:var(--muted);margin-top:4px;line-height:1.4;}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;}
+.cc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;box-shadow:var(--shadow);animation:cardIn .5s cubic-bezier(.22,1,.36,1) both;}
 .cc:nth-child(1){animation-delay:.05s;}.cc:nth-child(2){animation-delay:.1s;}.cc:nth-child(3){animation-delay:.15s;}.cc:nth-child(4){animation-delay:.2s;}.cc:nth-child(5){animation-delay:.25s;}.cc:nth-child(6){animation-delay:.3s;}
-.cc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.cc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
 .cc[data-s="izquierda"]::before{background:var(--izq);}
 .cc[data-s="centro-izquierda"]::before{background:var(--cizq);}
 .cc[data-s="centro-derecha"]::before{background:var(--cder);}
 .cc[data-s="derecha"]::before{background:var(--der);}
-.cc:hover{border-color:var(--primary);background:var(--card-hover);transform:translateY(-3px) scale(1.01);box-shadow:0 8px 30px rgba(44,90,160,.14);}
-.cc-h{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-.av{width:50px;height:50px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border);}
-.cc-nm{font-weight:600;font-size:14px;}
-.cc-pt{font-size:11px;color:var(--muted);}
-.cc-vp{font-size:10px;color:var(--dim);margin-top:1px;}
-.cc-model{display:inline-block;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;padding:2px 7px;border-radius:4px;margin-top:6px;}
-.cc-model.izquierda{background:rgba(220,38,38,.1);color:var(--izq);}
-.cc-model.centro-izquierda{background:rgba(234,88,12,.1);color:var(--cizq);}
-.cc-model.centro-derecha{background:rgba(44,90,160,.1);color:var(--cder);}
-.cc-model.derecha{background:rgba(124,58,237,.1);color:var(--der);}
-.stars{display:flex;gap:2px;margin:8px 0;}
-.star{width:14px;height:14px;border-radius:3px;transition:transform .15s;}
+.cc:hover{border-color:var(--accent);background:var(--card-hover);transform:translateY(-3px) scale(1.01);box-shadow:var(--shadow-lg);}
+.cc-h{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.av{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border);}
+.cc-nm{font-weight:600;font-size:13.5px;letter-spacing:-.1px;color:var(--text);}
+.cc-pt{font-size:10.5px;color:var(--muted);}
+.cc-vp{font-size:9.5px;color:var(--dim);margin-top:1px;}
+.cc-model{display:inline-block;font-size:8.5px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;padding:2px 8px;border-radius:3px;margin-top:5px;}
+.cc-model.izquierda{background:rgba(201,42,42,.08);color:var(--izq);}
+.cc-model.centro-izquierda{background:rgba(212,96,10,.08);color:var(--cizq);}
+.cc-model.centro-derecha{background:rgba(44,90,160,.08);color:var(--cder);}
+.cc-model.derecha{background:rgba(110,64,201,.08);color:var(--der);}
+.stars{display:flex;gap:2px;margin:6px 0;}
+.star{width:12px;height:12px;border-radius:2px;transition:transform .15s;}
 .star.f{background:var(--yellow);animation:countUp .3s cubic-bezier(.22,1,.36,1) both;}
 .star.f:nth-child(1){animation-delay:.05s;}.star.f:nth-child(2){animation-delay:.1s;}.star.f:nth-child(3){animation-delay:.15s;}.star.f:nth-child(4){animation-delay:.2s;}.star.f:nth-child(5){animation-delay:.25s;}
 .star.e{background:var(--border);}
-.cc-stance{font-size:11px;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-top:8px;border-top:1px solid var(--border);padding-top:8px;}
-.risk-idx{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:12px;margin-left:auto;transition:transform .2s;}
+.cc-stance{font-size:11px;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-top:8px;border-top:1px solid var(--border);padding-top:8px;}
+.risk-idx{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:10px;margin-left:auto;transition:transform .2s;letter-spacing:.2px;}
 .risk-idx:hover{transform:scale(1.1);}
-.risk-idx.alto{background:rgba(239,68,68,.1);color:var(--red);}
-.risk-idx.medio{background:rgba(245,158,11,.1);color:var(--yellow);}
-.risk-idx.bajo{background:rgba(16,185,129,.1);color:var(--green);}
+.risk-idx.alto{background:rgba(214,48,48,.08);color:var(--red);}
+.risk-idx.medio{background:rgba(212,154,8,.08);color:var(--yellow);}
+.risk-idx.bajo{background:rgba(13,150,104,.08);color:var(--green);}
 /* Comparador */
 .cmp-ctl{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center;}
-.cmp-ctl select{background:var(--card);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-size:12px;font-family:inherit;min-width:180px;}
-.cmp-ctl select:focus{outline:none;border-color:var(--primary);}
-.cmp-btn{background:var(--primary);border:none;color:#fff;padding:9px 18px;border-radius:8px;font-family:inherit;font-weight:600;cursor:pointer;font-size:12px;transition:all .25s;box-shadow:0 2px 8px rgba(44,90,160,.2);}
-.cmp-btn:hover{background:#1e4a8a;transform:translateY(-1px);box-shadow:0 4px 14px rgba(44,90,160,.3);}
-.cmp-grid{display:grid;gap:14px;}
-.cmp-row{display:grid;grid-template-columns:150px 1fr 1fr;gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;}
-.cmp-row.c3{grid-template-columns:150px 1fr 1fr 1fr;}
-.cmp-c{background:var(--card);padding:12px 14px;font-size:12px;line-height:1.6;}
-.cmp-c.lbl{font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);display:flex;align-items:center;background:var(--elevated);}
+.cmp-ctl select{background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:var(--radius);font-size:12px;font-family:var(--font);min-width:180px;transition:border-color .2s;}
+.cmp-ctl select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,115,74,.1);}
+.cmp-btn{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:var(--radius);font-family:var(--font);font-weight:700;cursor:pointer;font-size:12px;transition:all .25s;letter-spacing:.2px;}
+.cmp-btn:hover{background:#d4600a;transform:translateY(-1px);box-shadow:0 4px 14px rgba(232,115,74,.3);}
+.cmp-grid{display:grid;gap:12px;}
+.cmp-row{display:grid;grid-template-columns:140px 1fr 1fr;gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;}
+.cmp-row.c3{grid-template-columns:140px 1fr 1fr 1fr;}
+.cmp-c{background:var(--card);padding:14px 16px;font-size:12px;line-height:1.65;}
+.cmp-c.lbl{font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.7px;color:var(--dim);display:flex;align-items:center;background:var(--elevated);}
 /* Risk profile */
-.rp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px;}
-.rp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);animation:cardIn .5s cubic-bezier(.22,1,.36,1) both;transition:transform .3s,box-shadow .3s;}
+.rp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:12px;}
+.rp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);animation:cardIn .5s cubic-bezier(.22,1,.36,1) both;transition:transform .3s,box-shadow .3s;}
 .rp-card:nth-child(1){animation-delay:.05s;}.rp-card:nth-child(2){animation-delay:.1s;}.rp-card:nth-child(3){animation-delay:.15s;}.rp-card:nth-child(4){animation-delay:.2s;}.rp-card:nth-child(5){animation-delay:.25s;}.rp-card:nth-child(6){animation-delay:.3s;}
-.rp-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.08);}
-.rp-card h3{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;}
-.rp-card .rp-sub{font-size:11px;color:var(--muted);margin-bottom:14px;}
+.rp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+.rp-card h3{font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:8px;letter-spacing:-.1px;}
+.rp-card .rp-sub{font-size:10.5px;color:var(--dim);margin-bottom:14px;}
 .rp-card canvas{max-height:260px;}
 /* Alertas */
 .al-grid{display:grid;gap:14px;}
 .al-theme{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);animation:slideUp .4s cubic-bezier(.22,1,.36,1) both;}
 .al-theme:nth-child(1){animation-delay:.03s;}.al-theme:nth-child(2){animation-delay:.06s;}.al-theme:nth-child(3){animation-delay:.09s;}.al-theme:nth-child(4){animation-delay:.12s;}.al-theme:nth-child(5){animation-delay:.15s;}.al-theme:nth-child(6){animation-delay:.18s;}.al-theme:nth-child(7){animation-delay:.21s;}
-.al-hdr{padding:14px 18px;background:var(--elevated);font-weight:600;font-size:13px;display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;transition:background .2s;}
+.al-hdr{padding:14px 18px;background:var(--elevated);font-weight:600;font-size:12.5px;display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;transition:background .2s;letter-spacing:-.1px;}
 .al-hdr:hover{background:var(--border);}
-.al-hdr .ic{font-size:16px;transition:transform .3s;}
+.al-hdr .ic{font-size:15px;transition:transform .3s;}
 .al-hdr:hover .ic{transform:scale(1.2);}
-.al-hdr .tgl{margin-left:auto;color:var(--dim);transition:transform .3s cubic-bezier(.22,1,.36,1);}
+.al-hdr .tgl{margin-left:auto;color:var(--dim);transition:transform .3s cubic-bezier(.22,1,.36,1);font-size:10px;}
 .al-hdr.open .tgl{transform:rotate(180deg);}
 .al-body{display:none;overflow:hidden;}
 .al-body.open{display:block;animation:slideUp .3s ease;}
@@ -143,36 +143,36 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .imp-brow .bfill{position:absolute;top:0;height:100%;border-radius:5px;transition:width .8s cubic-bezier(.22,1,.36,1),left .8s cubic-bezier(.22,1,.36,1);}
 .imp-brow .bval{font-size:11px;font-weight:700;min-width:28px;text-align:center;}
 /* Impact */
-.imp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;}
-.imp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);animation:cardIn .5s cubic-bezier(.22,1,.36,1) both;transition:transform .3s,box-shadow .3s;}
+.imp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;}
+.imp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);animation:cardIn .5s cubic-bezier(.22,1,.36,1) both;transition:transform .3s,box-shadow .3s;}
 .imp-card:nth-child(1){animation-delay:.05s;}.imp-card:nth-child(2){animation-delay:.1s;}.imp-card:nth-child(3){animation-delay:.15s;}.imp-card:nth-child(4){animation-delay:.2s;}.imp-card:nth-child(5){animation-delay:.25s;}.imp-card:nth-child(6){animation-delay:.3s;}
-.imp-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.08);}
-.imp-card h3{font-size:13px;font-weight:600;margin-bottom:10px;}
+.imp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+.imp-card h3{font-size:13px;font-weight:600;margin-bottom:10px;letter-spacing:-.1px;}
 .imp-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);}
 .imp-row:last-child{border:none;}
 .imp-row .bar{height:8px;border-radius:4px;transition:width .5s;}
 .imp-row .lbl{font-size:11px;min-width:70px;text-align:right;color:var(--muted);}
 .imp-row .val{font-size:11px;font-weight:600;min-width:30px;}
 /* Consensos */
-.con-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:var(--shadow);animation:slideUp .4s cubic-bezier(.22,1,.36,1) both;transition:transform .3s,box-shadow .3s;}
-.con-card:nth-child(1){animation-delay:.05s;}.con-card:nth-child(2){animation-delay:.1s;}.con-card:nth-child(3){animation-delay:.15s;}.con-card:nth-child(4){animation-delay:.2s;}.con-card:nth-child(5){animation-delay:.25s;}
-.con-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.08);}
-.con-card h3{font-size:13px;font-weight:600;margin-bottom:6px;color:var(--primary);}
-.con-card .cnt{font-size:11px;color:var(--dim);margin-bottom:6px;}
-.con-card p{font-size:12px;color:var(--muted);line-height:1.6;}
+.con-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px;box-shadow:var(--shadow);animation:slideUp .4s cubic-bezier(.22,1,.36,1) both;transition:transform .3s,box-shadow .3s;}
+.con-card:nth-child(1){animation-delay:.05s;}.con-card:nth-child(2){animation-delay:.1s;}.con-card:nth-child(3){animation-delay:.15s;}.con-card:nth-child(4){animation-delay:.2s;}.con-card:nth-child(5){animation-delay:.25s;}.con-card:nth-child(6){animation-delay:.3s;}
+.con-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+.con-card h3{font-family:var(--font);font-size:14px;font-weight:700;margin-bottom:6px;color:var(--text);letter-spacing:-.1px;}
+.con-card .cnt{font-size:10px;color:var(--accent);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;font-weight:700;}
+.con-card p{font-size:12px;color:var(--muted);line-height:1.65;}
 /* Modal */
 .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;align-items:center;justify-content:center;padding:28px;backdrop-filter:blur(4px);}
 .mo.open{display:flex;animation:fadeIn .25s ease;}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-.md{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);max-width:880px;width:100%;max-height:85vh;overflow-y:auto;padding:28px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.15);animation:modalIn .35s cubic-bezier(.22,1,.36,1);}
+.md{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);max-width:860px;width:100%;max-height:85vh;overflow-y:auto;padding:32px;position:relative;box-shadow:0 24px 60px rgba(26,31,46,.18);animation:modalIn .35s cubic-bezier(.22,1,.36,1);}
 @keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
-.md-x{position:absolute;top:14px;right:14px;background:var(--elevated);border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s;}
+.md-x{position:absolute;top:16px;right:16px;background:var(--elevated);border:1px solid var(--border);color:var(--dim);width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .2s;}
 .md-x:hover{background:var(--red);color:#fff;border-color:var(--red);transform:rotate(90deg);}
-.md h2{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:3px;}
-.md .md-pt{color:var(--muted);font-size:12px;margin-bottom:18px;}
-.md-sec{margin-bottom:18px;}
-.md-sec h3{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--primary);margin-bottom:8px;font-weight:600;}
-.md-sec p,.md-sec li{font-size:13px;line-height:1.7;color:var(--muted);}
+.md h2{font-family:var(--font);font-size:20px;margin-bottom:3px;letter-spacing:-.3px;color:var(--text);font-weight:800;}
+.md .md-pt{color:var(--muted);font-size:11.5px;margin-bottom:20px;line-height:1.6;}
+.md-sec{margin-bottom:20px;}
+.md-sec h3{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:10px;font-weight:700;}
+.md-sec p,.md-sec li{font-size:12.5px;line-height:1.7;color:var(--muted);}
 .md-sec ul{padding-left:18px;}
 .md-sec li{margin-bottom:5px;}
 .md-props{display:grid;gap:10px;}
@@ -185,7 +185,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .w-box{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);}
 .s-box h4{color:var(--green);font-size:11px;margin-bottom:4px;}
 .w-box h4{color:var(--red);font-size:11px;margin-bottom:4px;}
-.sc-box{background:var(--plight);border:1px solid rgba(44,90,160,.15);border-radius:8px;padding:14px;margin-bottom:18px;}
+.sc-box{background:var(--accent-light);border:1px solid rgba(232,115,74,.15);border-radius:8px;padding:14px;margin-bottom:18px;}
 .sc-box h3{color:var(--primary);font-size:12px;margin-bottom:6px;}
 .sc-box p{font-size:13px;line-height:1.7;color:var(--text);}
 @media(max-width:1100px){.cgrid,.rp-grid,.imp-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));}}
@@ -238,7 +238,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   .con-card{padding:14px;}
   .con-card h3{font-size:12px;}
 }
-::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--dim);border-radius:4px;opacity:.4;}::-webkit-scrollbar-thumb:hover{background:var(--muted);}
 </style>
 </head>
 <body>
@@ -248,7 +248,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="hdr-logo">ME</div>
     <h1>Monitor Electoral en Salud <span>Primera Vuelta 2026</span></h1>
   </div>
-  <div class="hdr-meta">6 candidatos m&aacute;s opcionados<span class="badge">Uso interno AFIDRO</span></div>
+  <div class="hdr-meta">6 candidatos m&aacute;s opcionados &middot; Fuentes: SECNewgate/AFIDRO v2.0, ORZA<span class="badge">Uso interno AFIDRO</span></div>
 </div>
 <div class="nav">
   <button class="active" onclick="showSec('overview')">Panorama General</button>
@@ -264,7 +264,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <p class="ssub">Los 6 candidatos m&aacute;s opcionados de cara a primera vuelta, con f&oacute;rmula vicepresidencial y clasificaci&oacute;n de modelo de gobierno. Clic en cualquier candidato para detalle completo.</p>
   <div class="stats">
     <div class="st"><div class="lb">Candidatos</div><div class="vl">6</div><div class="dt">3 bloques ideol&oacute;gicos</div></div>
-    <div class="st"><div class="lb">Mantienen sistema mixto</div><div class="vl">4</div><div class="dt">Fajardo, L&oacute;pez, Valencia, De la Espriella</div></div>
+    <div class="st"><div class="lb">Mantienen sistema mixto</div><div class="vl">5</div><div class="dt">Barreras, Fajardo, L&oacute;pez, Valencia, De la Espriella</div></div>
     <div class="st"><div class="lb">Mayor riesgo regulatorio</div><div class="vl">Cepeda</div><div class="dt">&Iacute;ndice: 3.50 (Alto)</div></div>
     <div class="st"><div class="lb">Mayor desarrollo program&aacute;tico</div><div class="vl">Fajardo / Valencia</div><div class="dt">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</div></div>
   </div>
@@ -284,13 +284,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <h2 class="stitle">Perfil de Riesgo Sectorial</h2>
   <p class="ssub">An&aacute;lisis de 4 variables de riesgo para el sector salud (escala 1&ndash;5). Framework adaptado del modelo ORZA de an&aacute;lisis comparado de programas de gobierno.</p>
   <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:20px;box-shadow:var(--shadow);">
-    <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--primary);margin-bottom:8px;font-weight:600;">Metodolog&iacute;a</h3>
+    <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin-bottom:8px;font-weight:700;">Metodolog&iacute;a</h3>
     <p style="font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:10px;">Este m&oacute;dulo eval&uacute;a el riesgo para el sector salud en 4 dimensiones, adaptando el framework de an&aacute;lisis comparado de programas de gobierno de ORZA (orza.com.co). Cada variable se califica en escala 1&ndash;5 (1 = riesgo m&iacute;nimo, 5 = riesgo m&aacute;ximo) a partir de los programas de gobierno oficiales y declaraciones p&uacute;blicas de los candidatos.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;">
-      <div style="background:var(--elevated);padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5;"><strong style="color:var(--primary);">Regulatorio</strong><br><span style="color:var(--muted);">Nuevas regulaciones, controles sectoriales, licencias o restricciones que alteren reglas de mercado.</span></div>
-      <div style="background:var(--elevated);padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5;"><strong style="color:var(--primary);">Fiscal</strong><br><span style="color:var(--muted);">Cambios tributarios, cargas parafiscales, eliminaci&oacute;n de beneficios o presi&oacute;n fiscal diferencial.</span></div>
-      <div style="background:var(--elevated);padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5;"><strong style="color:var(--primary);">Pol&iacute;tico</strong><br><span style="color:var(--muted);">Conflictividad institucional, presi&oacute;n social organizada, intervenci&oacute;n estatal en decisiones privadas.</span></div>
-      <div style="background:var(--elevated);padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5;"><strong style="color:var(--primary);">Propiedad</strong><br><span style="color:var(--muted);">Incertidumbre sobre seguridad jur&iacute;dica de inversiones, activos y reg&iacute;menes de titulaci&oacute;n.</span></div>
+      <div style="background:var(--elevated);padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5;"><strong style="color:var(--text);">Regulatorio</strong><br><span style="color:var(--muted);">Nuevas regulaciones, controles sectoriales, licencias o restricciones que alteren reglas de mercado.</span></div>
+      <div style="background:var(--elevated);padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5;"><strong style="color:var(--text);">Fiscal</strong><br><span style="color:var(--muted);">Cambios tributarios, cargas parafiscales, eliminaci&oacute;n de beneficios o presi&oacute;n fiscal diferencial.</span></div>
+      <div style="background:var(--elevated);padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5;"><strong style="color:var(--text);">Pol&iacute;tico</strong><br><span style="color:var(--muted);">Conflictividad institucional, presi&oacute;n social organizada, intervenci&oacute;n estatal en decisiones privadas.</span></div>
+      <div style="background:var(--elevated);padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5;"><strong style="color:var(--text);">Propiedad</strong><br><span style="color:var(--muted);">Incertidumbre sobre seguridad jur&iacute;dica de inversiones, activos y reg&iacute;menes de titulaci&oacute;n.</span></div>
     </div>
   </div>
   <div id="riskHeatmap" style="margin-bottom:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;"></div>
@@ -326,7 +326,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <h2 class="stitle">Impacto por Actor del Ecosistema</h2>
   <p class="ssub">&iquest;Qui&eacute;n gana y qui&eacute;n pierde en cada escenario? Impacto estimado sobre los principales actores del sistema de salud (escala -3 a +3).</p>
   <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:20px;box-shadow:var(--shadow);">
-    <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--primary);margin-bottom:8px;font-weight:600;">Metodolog&iacute;a</h3>
+    <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin-bottom:8px;font-weight:700;">Metodolog&iacute;a</h3>
     <p style="font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:10px;">Los scores de impacto por actor se derivan del an&aacute;lisis de los programas de gobierno oficiales y las declaraciones p&uacute;blicas en medios y foros de cada candidato. Para cada actor del ecosistema se eval&uacute;a si las propuestas representan un beneficio neto, un efecto neutro o una presi&oacute;n/riesgo.</p>
     <div style="display:flex;gap:14px;flex-wrap:wrap;">
       <div style="display:flex;align-items:center;gap:5px;font-size:11px;"><div style="width:30px;height:8px;border-radius:4px;background:var(--green);"></div><strong>Positivo (+1 a +3)</strong><span style="color:var(--muted)">&mdash; Las propuestas benefician a este actor</span></div>
@@ -339,7 +339,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 <div id="consensos" class="sec">
   <h2 class="stitle">Mapa de Consensos</h2>
-  <p class="ssub">Temas en los que coincide la mayor&iacute;a de candidatos. Espacios de incidencia m&aacute;s seguros para AFIDRO independientemente del resultado.</p>
+  <p class="ssub">Hallazgos transversales del an&aacute;lisis comparado y espacios de incidencia para el sector.</p>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:24px;box-shadow:var(--shadow);border-left:4px solid var(--accent);">
+    <p style="font-size:13px;line-height:1.8;color:var(--text);margin:0;">Como no ha ocurrido en las &uacute;ltimas tres d&eacute;cadas, <strong>la salud es hoy protagonista del debate electoral</strong> a la Presidencia de la Rep&uacute;blica. Los seis candidatos coinciden en el diagn&oacute;stico (crisis financiera, institucional y de confianza) pero divergen en las rutas de soluci&oacute;n, en la profundidad de la reforma, en el peso del Estado frente al mercado y en el rol de las EPS. La diversidad de propuestas evidencia que ninguna campa&ntilde;a tiene todas las respuestas y que la implementaci&oacute;n de cualquier reforma requerir&aacute; acuerdos con EPS, IPS, talento humano, industria, pacientes, academia y entes territoriales. Este momento exige que los actores del sistema fortalezcan sus espacios de di&aacute;logo, documenten evidencia y construyan posiciones comunes hacia soluciones t&eacute;cnicas sostenibles y centradas en el paciente.</p>
+  </div>
   <div id="conGrid"></div>
 </div>
 
@@ -351,44 +354,44 @@ const P={"cepeda": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAAD/2wBDAAIBA
 
 const C=[
 {id:"cepeda",nm:"Iván Cepeda",vp:"Aida Quilcué",prof:"Político, escritor y exsenador",party:"Pacto Histórico",spectrum:"izquierda",model:"Intervención Estatal",stars:1,
-stance:"Sistema 100% público. Continuidad del Gobierno Petro. Sin programa específico de salud.",
-scenario:"Continuidad y profundización del modelo Petro. Mayor presión regulatoria del ciclo electoral. Sistema 100% público transformaría radicalmente el aseguramiento. Riesgo concentrado en sectores de alta renta. Presión regulatoria, fiscal y política simultánea sin ventanas de estabilidad normativa.",
-proposals:[{t:"Continuidad reforma Petro",d:"Respaldo espíritu de reforma a la salud del Gobierno Petro (archivada). Sistema 100% público."},{t:"Infraestructura hospitalaria",d:"Vigilancia ciudadana y mecanismos anticorrupción."},{t:"Enfoque estructural",d:"Salud integrada a agenda de revolución agraria, economía popular y justicia social."}],
-team:"No identificado. Paola Fonseca (Asesora UTL).",str:"Respaldo del aparato gubernamental actual.",weak:"Ausencia de propuestas diferenciadas. Gran dependencia de percepción del Gobierno Petro.",
-concl:"Representa continuidad de línea actual. Mayor densidad regulatoria del conjunto analizado.",
+stance:"Sistema mixto con EPS bajo mayor control estatal. Continuidad del Gobierno Petro. Plan de Gobierno sin capítulo de salud. Ley 100 'convirtió la salud en negocio'.",
+scenario:"Continuidad del Gobierno Petro. EPS bajo control total del Estado con aseguramiento colectivo. Visión de Ley 100 como 'negocio' es ideológicamente contraria al modelo de mercado. Mayor control estatal puede traducirse en fijación de precios de medicamentos, restricciones a PI o compras centralizadas con énfasis en genéricos. Sin equipo técnico en salud identificado, alta imprevisibilidad.",
+proposals:[{t:"Reforma estructural al sistema",d:"Modelo de aseguramiento colectivo con EPS bajo control total del Estado. No elimina EPS pero las subordina."},{t:"Plan de choque inmediato",d:"Estabilizar servicio y garantizar atención. Suministro de medicamentos."},{t:"Anticorrupción en salud",d:"Recursos recuperados de corrupción destinados a fortalecer el sistema. Sistema Nacional contra la Macrocorrupción."},{t:"Diagnóstico Nueva EPS",d:"Análisis técnico riguroso antes de tomar decisiones definitivas."},{t:"Fortalecimiento red hospitalaria",d:"Especialmente IPS en crisis. Mejora condiciones laborales talento humano."}],
+team:"No identificado públicamente. Plan de Gobierno no incluye asesores en salud.",str:"Respaldo del aparato gubernamental actual.",weak:"Ausencia de propuestas diferenciadas. Gran dependencia de percepción del Gobierno Petro.",
+opps:"Sistema mixto con EPS es más favorable que eliminación total. Anticorrupción puede mejorar flujos de pago. Diagnóstico Nueva EPS reduce decisiones intempestivas.",riesgos:"Ley 100 como 'negocio' es contraria al modelo de mercado. Continuidad Pacto Histórico implica retomar reforma archivada. Mayor control estatal puede derivar en fijación de precios o restricciones a PI.",concl:"Escenario de mayor riesgo para actores del aseguramiento privado. Importante monitorear evolución de equipo técnico.",
 radar:[2,1,1,1,1,2,2],riskSalud:3.5,riskLevel:"alto",
 risks:{reg:4,fis:3,pol:4,prop:3},
 impact:{eps:-3,prest:-2,farma:-2,pac:1,talento:0,tec:-1},
 viab:{tipo:"Requiere reforma legal profunda",detalle:"Sistema 100% público exige reforma a Ley 100 y posiblemente acto legislativo. Sin proyecto radicado. Alta dependencia de mayorías parlamentarias que no están garantizadas."}},
 
-{id:"barreras",nm:"Roy Barreras",vp:"Por definir",prof:"Médico, exsenador, exembajador",party:"Independiente",spectrum:"izquierda",model:"Transformación Pragmática",stars:3,
-stance:"\"El Gobierno de Petro ha destrozado el sistema de salud\". Reforma profunda pero viable, no ideológica.",
-scenario:"Transformación del aseguramiento sin estatización total. EPS eliminadas 'como existen hoy' pero mantiene algún tipo de asegurador transformado. Plataformas digitales de medicamentos disruptivas para cadena farmacéutica tradicional. Cuestiona precios ligados a patentes.",
-proposals:[{t:"Transformar aseguramiento",d:"Eliminar EPS 'como existen hoy'. Acabar con integración vertical y corrupción."},{t:"Atención primaria",d:"Centrar sistema en prevención. Recuperar red pública hospitalaria."},{t:"Medicamentos digitales",d:"Entrega domiciliaria vía plataformas (tipo Rappi). Pago directo a farmacias."},{t:"Inyección de recursos",d:"Estabilización con reglas claras. Monto no cuantificado."}],
-team:"Experiencia propia como médico. Expresidente del Senado. Participó en mesas técnicas de reforma 2022-2023.",str:"Conocimiento técnico y político del sector. Propuestas pragmáticas.",weak:"Falta cuantificación financiera. No define qué entidad reemplaza funciones de aseguramiento.",
-concl:"Conocimiento del sistema. Transformación sin estatización total. Disruptivo para cadena farmacéutica.",
+{id:"barreras",nm:"Roy Barreras",vp:"Por definir",prof:"Médico, autor Ley Estatutaria Salud (1751/2015)",party:"Independiente",spectrum:"izquierda",model:"Transformación Pragmática",stars:3,
+stance:"Único médico en la contienda y autor Ley Estatutaria de Salud (1751/2015). Recuperar aseguramiento individual mixto con auditorías. Impulsar producción nacional negociando patentes.",
+scenario:"Recupera aseguramiento individual mixto público-privado con auditorías. Como médico y autor de Ley Estatutaria tiene autoridad técnica para liderar transformaciones. Pago directo a farmacias e industria sin intermediarios. Riesgo principal: negociación de patentes puede implicar licencias obligatorias y producción nacional podría crear competencia asimétrica con industria innovadora.",
+proposals:[{t:"Recuperar aseguramiento individual mixto",d:"Con auditorías para garantizar que EPS no desvíen recursos. Eliminar integración vertical."},{t:"Atención primaria preventiva",d:"Fortalecer red hospitalaria pública. Acceso al agua, nutrición y condiciones de vida."},{t:"Medicamentos y producción nacional",d:"Entrega domiciliaria vía plataformas. Pago directo a farmacias e industria sin intermediarios. Producción nacional negociando patentes."},{t:"Protección talento humano",d:"Proteger 1,3 millones de trabajadores de la salud. Mejora de condiciones laborales."},{t:"Sistema de información",d:"Fortalecer control de recursos del sistema."}],
+team:"Coord. programático: Diego Guevara. Equipo político: Ángel Becassino, Antonio Solá. Barreras concentra conocimiento sectorial como médico y autor Ley Estatutaria.",str:"Mayor conocimiento personal del sistema. Médico y autor Ley Estatutaria. Autoridad técnica y política.",weak:"Falta cuantificación financiera. No define qué entidad reemplaza funciones de aseguramiento.",
+opps:"Pago directo a farmacias e industria mejoraría flujos de caja. Recuperación aseguramiento individual garantiza continuidad. Énfasis en atención preventiva.",riesgos:"Negociación de patentes puede implicar licencias obligatorias o presión sobre precios. Producción nacional puede crear competencia asimétrica con industria innovadora. Eliminación integración vertical genera turbulencias en distribución.",concl:"Mayor riesgo: postura sobre negociación de patentes y producción nacional. Se recomienda diálogo técnico directo para posicionar valor del ecosistema de innovación.",
 radar:[5,6,3,4,2,5,3],riskSalud:3.0,riskLevel:"alto",
 risks:{reg:3,fis:3,pol:3,prop:2},
-impact:{eps:-3,prest:0,farma:-2,pac:1,talento:0,tec:1},
+impact:{eps:-1,prest:1,farma:-2,pac:1,talento:1,tec:1},
 viab:{tipo:"Requiere reforma legal",detalle:"Eliminación de EPS requiere modificación del marco de aseguramiento (Ley 100/Ley 1122). Experiencia legislativa como expresidente del Senado facilita el trámite, pero sin cuantificación financiera el debate parlamentario se complica."}},
 
 {id:"fajardo",nm:"Sergio Fajardo",vp:"Edna Bonilla",prof:"Matemático, político, profesor",party:"Dignidad y Compromiso",spectrum:"centro-izquierda",model:"Equilibrio Institucional",stars:5,
 stance:"\"Reparar el sistema antes que reformarlo\". Programa 'Adelante con Salud'. Crisis como emergencia humanitaria por negligencia gubernamental.",
 scenario:"Menor riesgo regulatorio. Mayor predictibilidad institucional. Disciplina fiscal y reformas graduales. Favorable para actores que operan correctamente. Fortalece IETS, pago basado en valor, auditorías rigurosas. Sin rupturas normativas abruptas.",
 proposals:[{t:"Plan Recuperación – Primeros 100 días",d:"Puesto de Mando Presidencial. Auditorías independientes a EPS. Restablecer liquidez. Eliminar barreras a medicamentos y citas."},{t:"Reforma financiera y modelo de pago",d:"Recalcular UPC con criterios técnicos. Institucionalidad independiente. Nuevo acuerdo de punto final. Modernizar MIPRES."},{t:"Modelo territorializado",d:"Prestación efectiva en cada municipio y departamento. Coordinación EPS-IPS-secretarías."},{t:"Prevención y APS",d:"Redes territoriales, medicina familiar, salud mental. Prioridad: Catatumbo, Cauca, Chocó."},{t:"Talento humano con dignidad",d:"Formalización laboral. Mejorar condiciones. Ampliar cupos residencia. Incentivos zona rural."},{t:"Salud digital y transparencia",d:"Interoperabilidad historias clínicas. Telemedicina. Compras basadas en valor. Acuerdos de acceso administrado alto costo."},{t:"Innovación",d:"Fortalecer IETS. Adopción nuevas tecnologías evaluadas prospectivamente. Pago basado en valor."}],
-team:"Luz María Agudelo (exsecretaria Salud Medellín/Antioquia). Bernardo Useche (investigador). Andrés Vecino (salud pública).",str:"Propuesta más desarrollada y técnica. Equipo sólido con experiencia ejecutiva. No requiere reforma legal profunda.",weak:"No especifica montos de inversión. No aborda deuda estructural directamente.",
-concl:"Mayor predictibilidad regulatoria e institucional. Pago basado en valor y auditorías rigurosas. Perfil de riesgo homogéneo y moderado.",
+team:"Equipo más robusto y verificable: Luz María Agudelo (exsecretaria Salud Medellín/Antioquia). Andrés Vecino (sistemas de salud). Arturo Montejo (MSc Políticas de Salud, LSE). Bernardo Useche (Centro Estudios del Trabajo). Marcela Garcés (MSc Salud Pública, U. Illinois). Víctor Correa (Gobierno y Políticas Públicas). Javier Criales (Soc. Col. Pediatría Valle). Ángela Molina (Epidemiología, UdeA).",str:"Propuesta más desarrollada y técnica. Equipo sólido con experiencia ejecutiva. No requiere reforma legal profunda.",weak:"No especifica montos de inversión. No aborda deuda estructural directamente.",
+opps:"Puesto de Mando Presidencial con foco en medicamentos es punto de entrada para agenda de acceso. UPC independiente puede incorporar costo real de innovadores. Diálogo con actores es la vía más favorable para interlocución formal. Modernización MIPRES agilizaría prescripción.",riesgos:"Acuerdos de acceso administrado para alto costo según diseño pueden derivar en fijación de precios. Auditoría a EPS puede presionar contratos comerciales con industria.",concl:"Mayor solvencia técnica y equipo más preparado. Postura pragmática y dialogante es la más favorable para actores institucionales del sistema.",
 radar:[6,5,5,7,5,7,8],riskSalud:2.75,riskLevel:"medio",
 risks:{reg:3,fis:2,pol:2,prop:1},
 impact:{eps:1,prest:2,farma:2,pac:3,talento:3,tec:3},
 viab:{tipo:"Mayormente gestión administrativa",detalle:"La mayoría de propuestas no requieren reforma legal: recálculo de UPC, auditorías, MIPRES, telemedicina son competencia del ejecutivo. Acuerdo de punto final podría requerir ley. Viabilidad alta sin depender del Congreso."}},
 
 {id:"lopez",nm:"Claudia López",vp:"Leonardo Huerta",prof:"Politóloga, exalcaldesa Bogotá",party:"Imparables",spectrum:"centro-izquierda",model:"Reforma Mixta Pragmática",stars:4,
-stance:"Sistema mixto público-privado basado en experiencia COVID. La pelea no es público vs. privado sino contra corrupción y conflictos de interés.",
+stance:"Sistema mixto con gestoras y prestadoras bajo límites a integración vertical. Experiencia COVID como prueba del modelo. Propone evolucionar del 'derecho a la salud' al 'derecho al cuidado'. Deuda: $32,9 billones.",
 scenario:"Modelo mixto con controles estrictos. Autoridad técnico-científica independiente para incorporación de tecnologías. Fondo de rescate beneficia prestadores con cartera. Transparencia financiera obligatoria afecta EPS con prácticas opacas.",
 proposals:[{t:"Sistema Mixto e Integral",d:"Gestoras y prestadoras con límites a integración vertical. Tablas de precios unificadas por región. Planes de beneficios explícitos."},{t:"Nuevo estudio actuarial",d:"Realidad demográfica y epidemiológica. Planes que incorporen salud mental, discapacidad, envejecimiento."},{t:"Transparencia total EPS",d:"Operaciones financieras públicas. Trazabilidad flujo de recursos. Auditoría ciudadana en tiempo real."},{t:"Historia clínica interoperable",d:"Sistema de información unificado centrado en paciente. Tecnologías presenciales y remotas."},{t:"Fondo de rescate",d:"Aliviar deudas EPS-prestadores-proveedores. Garantizar medicamentos y citas desde día 1."},{t:"Autoridad técnico-científica",d:"Independiente del ciclo político. Define incorporación de tecnologías, servicios e innovaciones."}],
 team:"Alejandro Gómez (exsecretario Salud Bogotá).",str:"Viables sin reforma legal profunda. Experiencia gestión COVID.",weak:"No especifica monto fondo de rescate. HC interoperable requiere inversión significativa.",
-concl:"Equilibrada: mantiene modelo mixto con controles estrictos. Autoridad técnico-científica independiente es favorable para industria.",
+opps:"Fondo de rescate resolvería cuello de botella más crítico: pago a prestadores y proveedores. Planes basados en ciencia abren espacio para diálogo técnico. Modelo mixto garantiza continuidad de EPS.",riesgos:"Planes de beneficios explícitos podrían restringir medicamentos de alto costo no incluidos en plan básico.",concl:"Enfoque pragmático y modelo mixto compatible con misionalidades de actores del sistema. Pago de deuda, estudio actuarial y planes basados en ciencia alineados con agenda de acceso.",
 radar:[6,4,5,7,3,4,7],riskSalud:2.5,riskLevel:"medio",
 risks:{reg:2,fis:2,pol:2,prop:1},
 impact:{eps:0,prest:2,farma:1,pac:2,talento:1,tec:3},
@@ -398,8 +401,8 @@ viab:{tipo:"Mixto: gestión + ley para autoridad técnica",detalle:"Sistema mixt
 stance:"\"El sistema necesita ajustes profundos, no destrucción\". Proyecto de Ley Estatutaria de contrarreforma radicado con 20 congresistas.",
 scenario:"Favorable para statu quo con mejoras. Menor riesgo regulatorio. Titularización deuda beneficia prestadores con cartera. Certificación calidad favorece instituciones bien gestionadas. UPC diferencial corrige incentivos perversos.",
 proposals:[{t:"Libertad de elección",d:"Garantía constitucional: ciudadanos deciden entre EPS pública, privada o mixta."},{t:"UPC diferencial por riesgo",d:"Cálculo actuarial con perfil epidemiológico individual. Ajuste por condiciones, edad, zona."},{t:"Salario mínimo médicos",d:"Piso mínimo de protección laboral. Escalafón por especialización."},{t:"Titularización deuda",d:"Reconocimiento deuda a EPS e IPS. +1 punto en aportes de salud."},{t:"Certificación de calidad",d:"EPS/IPS que cumplan estándares obtienen contratos a 20 años."},{t:"Giro directo condicional",d:"Mecanismo de sanción si EPS no pagan en plazos."},{t:"Redes de servicios",d:"Integrales e integradas, organizadas territorialmente. APS integrada en aseguramiento."}],
-team:"José Daniel Álzate Suárez (Ex Keralty). Juan Diego Álvarez.",str:"Única con proyecto de ley radicado. Propuestas técnicas sólidas. Titularización es solución fiscal realista.",weak:"Titularización aumenta deuda pública. Contratos 20 años generan rigideces. UPC diferencial aumenta complejidad administrativa.",
-concl:"Menor riesgo regulatorio. Titularización beneficia prestadores. Certificación favorece instituciones bien gestionadas.",
+team:"José Daniel Álzate Suárez (Ex Keralty). Juan Diego Álvarez.",str:"Única con proyecto de ley radicado. Titularización es mecanismo financiero más sofisticado. Aumento cotización genera recursos frescos permanentes. UPC diferenciada técnicamente correcta.",weak:"Titularización aumenta deuda pública. Contratos 20 años generan rigideces. UPC diferencial aumenta complejidad administrativa.",
+opps:"UPC diferenciada y cobertura enfermedades huérfanas/crónicas son incentivos directos para acceso. Titularización mejoraría liquidez de toda la cadena. Libertad de elección compatible con distribución de innovadores.",riesgos:"Compra masiva de medicamentos podría favorecer modelo centralizado con énfasis en genéricos que limite acceso a moléculas innovadoras.",concl:"Propuesta más detallada desde perspectiva técnico-financiera. Cobertura enfermedades crónicas/huérfanas y UPC diferenciada con mayor alineación con agenda de acceso.",
 radar:[8,4,7,4,6,5,5],riskSalud:2.0,riskLevel:"bajo",
 risks:{reg:2,fis:2,pol:2,prop:1},
 impact:{eps:2,prest:3,farma:1,pac:2,talento:3,tec:1},
@@ -409,8 +412,8 @@ viab:{tipo:"Ley Estatutaria radicada",detalle:"Única candidata con proyecto de 
 stance:"\"El gobierno destruyó la salud\". Rescate urgente y reversión total de políticas actuales. 'El milagro de la salud'.",
 scenario:"Menor riesgo regulatorio y de propiedad del conjunto. Pro-inversión privada. Desregulación sectorial. Gran Acuerdo Nacional incluye industria farmacéutica. 10B puede ser insuficiente. Riesgo de inviabilidad fiscal: recorte Estado 40% + eliminación impuestos contradice inversión en salud.",
 proposals:[{t:"Plan choque 90 días",d:"Reactivar tratamientos críticos. Suministro inmediato medicamentos. Emergencia nacional."},{t:"Rescate $10 billones",d:"Presupuesto nacional o titularización de inversiones."},{t:"Nuevo modelo atención",d:"Mantener aseguradores eficientes. Premiar buen desempeño. No destruir sistema."},{t:"Anular decretos Petro",d:"Derogar normativa expedida. Volver a marco regulatorio anterior."},{t:"Gran Acuerdo Nacional",d:"Gobierno, EPS, industria farmacéutica, hospitales, talento humano, usuarios. Ley de punto final para deudas históricas."},{t:"Modernización APP",d:"Alianzas público-privadas para hospitales regionales."},{t:"Salud rural",d:"Brigadas médicas móviles. Telemedicina con infraestructura satelital."}],
-team:"Iván Sánchez. Claudia Amaya.",str:"Plan 90 días concreto en plazos. Mantener EPS eficientes es pragmático.",weak:"10 billones insuficientes (estimaciones: 30-50B). Recortar Estado 40% incompatible con inversión en salud. Eliminación 4x1000 y gasolina reduce ingresos fiscales.",
-concl:"Propuesta populista con elementos conservadores. Gran Acuerdo incluye industria. Alto riesgo de inviabilidad fiscal.",
+team:"Iván Sánchez. Claudia Amaya.",str:"Programa más completo de lo que declaraciones sugieren. Seis componentes cubren áreas críticas. APP para hospitales con precedentes exitosos. Salud es 2do pilar de 10.",weak:"10 billones insuficientes (estimaciones: 30-50B). Recortar Estado 40% incompatible con inversión en salud. Eliminación 4x1000 y gasolina reduce ingresos fiscales.",
+opps:"Entrega de medicamentos esenciales y pago salarios hospitalarios favorecen cadena farmacéutica. APP para hospitales crean oportunidades. Discurso de libre empresa compatible con innovación farmacéutica.",riesgos:"Liquidación masiva de EPS puede generar transición caótica. Ausencia de equipo técnico aumenta incertidumbre en política de medicamentos. Preferencia compras públicas nacionales puede extenderse al sector farmacéutico.",concl:"Seis componentes cubren áreas urgentes pero carece de propuestas sobre UPC, plan de beneficios y política de medicamentos. Riesgo de inviabilidad fiscal persiste.",
 radar:[5,5,4,3,3,3,3],riskSalud:2.5,riskLevel:"medio",
 risks:{reg:2,fis:3,pol:3,prop:1},
 impact:{eps:2,prest:1,farma:1,pac:0,talento:1,tec:0},
@@ -421,30 +424,37 @@ const sColors={izquierda:'#dc2626','centro-izquierda':'#ea580c','centro-derecha'
 const sLabels={izquierda:'Izquierda','centro-izquierda':'Centro Izq.','centro-derecha':'Centro Der.',derecha:'Derecha'};
 
 const themes=[
-{k:"aseguramiento",l:"Modelo de Aseguramiento",ic:"🏥"},
-{k:"medicamentos",l:"Medicamentos y Precios",ic:"💊"},
-{k:"financiamiento",l:"Financiamiento del Sistema",ic:"💰"},
+{k:"aseguramiento",l:"EPS y Aseguramiento",ic:"🏥"},
+{k:"deuda",l:"Deuda del Sistema",ic:"🏦"},
+{k:"upc",l:"UPC",ic:"📊"},
+{k:"medicamentos",l:"Acceso a Servicios y Medicamentos",ic:"💊"},
+{k:"talento",l:"Talento Humano en Salud",ic:"👩‍⚕️"},
+{k:"planben",l:"Plan de Beneficios",ic:"📋"},
+{k:"financiamiento",l:"Financiamiento General",ic:"💰"},
 {k:"innovacion",l:"Innovación y Tecnología",ic:"🔬"},
-{k:"talento",l:"Talento Humano",ic:"👩‍⚕️"},
 {k:"aps",l:"Atención Primaria / Prevención",ic:"🩺"},
 {k:"transparencia",l:"Transparencia / Anticorrupción",ic:"🔍"}];
 
 const alerts={
-aseguramiento:{cepeda:{s:"red",t:"Sistema 100% público. Continuidad reforma Petro."},barreras:{s:"red",t:"Eliminar EPS 'como existen hoy'. Mantiene algún tipo de asegurador transformado."},fajardo:{s:"green",t:"Mantiene sistema. Auditorías independientes. Modelo territorializado."},lopez:{s:"green",t:"Sistema mixto con gestoras y prestadoras. Límites a integración vertical."},valencia:{s:"green",t:"Libertad de elección. Contrarreforma. Ley Estatutaria radicada."},espriella:{s:"green",t:"Mantener aseguradores eficientes. Gran Acuerdo Nacional."}},
-medicamentos:{cepeda:{s:"gray",t:"Sin propuestas específicas."},barreras:{s:"yellow",t:"Entrega domiciliaria digital. Cuestiona precios/patentes. Producción local."},fajardo:{s:"green",t:"Fortalecer IETS. Compras basadas en valor. Acuerdos acceso administrado alto costo."},lopez:{s:"green",t:"Garantizar medicamentos día 1. Tablas precios unificadas."},valencia:{s:"green",t:"Giro directo condicional. UPC diferencial."},espriella:{s:"green",t:"Suministro inmediato. Gran Acuerdo incluye industria farmacéutica."}},
-financiamiento:{cepeda:{s:"gray",t:"Sin propuestas cuantificadas."},barreras:{s:"yellow",t:"Inyección recursos. Monto no cuantificado."},fajardo:{s:"yellow",t:"Impuestos saludables. Fondo EPS intervenidas. Sin montos."},lopez:{s:"yellow",t:"Fondo de rescate. Reforma financiamiento. Sin monto."},valencia:{s:"green",t:"Titularización deuda. +1 punto aportes salud."},espriella:{s:"yellow",t:"Rescate $10B (puede ser insuficiente). Inviabilidad fiscal."}},
-innovacion:{cepeda:{s:"gray",t:"Sin propuestas."},barreras:{s:"yellow",t:"Plataformas digitales tipo Rappi."},fajardo:{s:"green",t:"Interoperabilidad HC. Telemedicina. IA datos. MIPRES modernizado."},lopez:{s:"green",t:"Historia clínica interoperable. Autoridad técnico-científica independiente."},valencia:{s:"yellow",t:"Redes integradas."},espriella:{s:"yellow",t:"Telemedicina satelital zonas apartadas. APP hospitales."}},
-talento:{cepeda:{s:"gray",t:"Sin propuestas."},barreras:{s:"gray",t:"No aborda directamente."},fajardo:{s:"green",t:"Formalización laboral. Cupos residencia. Incentivos zona rural."},lopez:{s:"gray",t:"No aborda directamente."},valencia:{s:"green",t:"Salario mínimo médicos. Escalafón por especialización."},espriella:{s:"yellow",t:"Profesionalización. Bonificaciones por resultados."}},
-aps:{cepeda:{s:"yellow",t:"Infraestructura hospitalaria territorial."},barreras:{s:"green",t:"APS y prevención. Primer nivel de atención."},fajardo:{s:"green",t:"Redes territoriales. Medicina familiar. Salud mental. Prioridad: Catatumbo, Cauca, Chocó."},lopez:{s:"yellow",t:"Implícito en modelo mixto integral."},valencia:{s:"green",t:"APS integrada en aseguramiento. Prevención."},espriella:{s:"yellow",t:"Prevención basada en deporte y nutrición desde infancia."}},
-transparencia:{cepeda:{s:"yellow",t:"Vigilancia ciudadana."},barreras:{s:"yellow",t:"Reglas claras y consensos."},fajardo:{s:"green",t:"Plataforma digital transparencia. Rendición de cuentas permanente."},lopez:{s:"green",t:"Transparencia total EPS. Trazabilidad. Auditoría ciudadana."},valencia:{s:"green",t:"Certificación calidad. Giro directo condicional."},espriella:{s:"yellow",t:"Auditoría técnica implacable a EPS."}}
+aseguramiento:{cepeda:{s:"red",t:"EPS bajo control total del Estado con aseguramiento colectivo. Acepta participación de EPS privadas pero subordinadas. Diagnóstico técnico de Nueva EPS antes de decidir."},barreras:{s:"yellow",t:"Recuperar aseguramiento individual mixto público-privado con auditorías. Eliminar integración vertical. Acabar con EPS corruptas."},fajardo:{s:"green",t:"Auditoría independiente a EPS. Acuerdo de punto final. Modelo territorializado EPS-IPS-Secretarías. Coordinación real entre actores."},lopez:{s:"green",t:"Modelo mixto con gestoras y prestadoras públicas y privadas. Límites a integración vertical. Auditoría por resultados."},valencia:{s:"green",t:"Libertad de elección (público, privado, solidario). Giro directo solo si EPS no paga. Contrarreforma con Ley Estatutaria radicada."},espriella:{s:"yellow",t:"Auditoría técnica implacable: las que no cumplan se liquidan. APP para hospitales. Mesa unificada de actores."}},
+deuda:{cepeda:{s:"yellow",t:"Plan de choque inmediato. Recursos recuperados de la corrupción destinados al sistema."},barreras:{s:"yellow",t:"Pago directo a farmacias e industria farmacéutica. Sin mecanismo integral detallado para deuda hospitalaria."},fajardo:{s:"green",t:"Acuerdo de 'punto final' con hospitales, aseguradoras y usuarios. Deuda legítima reconocida con reglas claras para saldarla."},lopez:{s:"green",t:"Fondo público de rescate en el primer año. Pago único y concertado de $32,9 billones."},valencia:{s:"green",t:"Titularización de la deuda ($33-50 bn) para generar liquidez inmediata en hospitales."},espriella:{s:"yellow",t:"Plan de choque de $10 bn en 90 días vía ADRES, PGN o bonos. Mesa unificada de actores. Puede ser insuficiente."}},
+upc:{cepeda:{s:"gray",t:"No especifica propuesta técnica sobre la UPC."},barreras:{s:"yellow",t:"Fortalecer sistema de información del sector como base técnica para la fijación."},fajardo:{s:"green",t:"Recálculo técnico con institucionalidad independiente para cálculo y seguimiento. Criterios basados en evidencia."},lopez:{s:"green",t:"Nuevo estudio actuarial independiente con datos demográficos y epidemiológicos actuales."},valencia:{s:"green",t:"UPC diferenciada por nivel de riesgo del paciente. Más recursos por enfermos, menos por sanos."},espriella:{s:"gray",t:"No precisa mecanismo técnico de ajuste en el programa oficial."}},
+medicamentos:{cepeda:{s:"yellow",t:"Garantizar suministro como parte del plan de choque. Sin mecanismo específico detallado."},barreras:{s:"red",t:"Producción nacional negociando patentes. Pago directo sin intermediarios. Riesgo: licencias obligatorias o presión sobre precios."},fajardo:{s:"green",t:"Eliminación inmediata de barreras. Modernización MIPRES. Compras basadas en valor. Acuerdos acceso administrado alto costo."},lopez:{s:"green",t:"Reactivación tras pago de deuda. Modelo preventivo territorial. Historia clínica digital."},valencia:{s:"yellow",t:"Compra masiva de medicamentos. Choque de procedimientos represados. Cobertura enfermedades huérfanas. Riesgo: modelo centralizado con énfasis en genéricos."},espriella:{s:"green",t:"Garantía inmediata de citas, cirugías y medicamentos esenciales. Brigadas móviles y telemedicina rural."}},
+talento:{cepeda:{s:"yellow",t:"Mejora de condiciones laborales del recurso humano en salud. Sin mecanismo específico."},barreras:{s:"green",t:"Proteger 1,3 millones de trabajadores. Mejora de condiciones laborales."},fajardo:{s:"green",t:"Formalización laboral. Cupos residencia. Incentivos zona rural. Dignidad como eje."},lopez:{s:"gray",t:"Sin propuesta específica desarrollada."},valencia:{s:"green",t:"Salario mínimo para médicos y enfermeras. Escalafón por especialización. Pago a tiempo."},espriella:{s:"yellow",t:"Profesionalización. Mejores condiciones. Bonificaciones por resultados."}},
+planben:{cepeda:{s:"gray",t:"Sin propuesta específica. Énfasis en garantizar lo básico."},barreras:{s:"gray",t:"Sin propuesta específica sobre contenido del plan de beneficios."},fajardo:{s:"yellow",t:"Compras basadas en valor para medicamentos de alto costo. Sin sección específica de plan de beneficios."},lopez:{s:"green",t:"Planes de beneficios explícitos basados en ciencia y evidencia. Cobertura para crónicos, enfermedades raras y discapacidad."},valencia:{s:"green",t:"Cobertura especial para enfermedades huérfanas, crónicas y discapacidad. Definición técnica del plan."},espriella:{s:"gray",t:"Sin propuesta específica en el programa oficial."}},
+financiamiento:{cepeda:{s:"gray",t:"Sin propuestas cuantificadas. Depende de recursos anticorrupción."},barreras:{s:"yellow",t:"Inyección de recursos. Monto no cuantificado públicamente."},fajardo:{s:"yellow",t:"Impuestos saludables. Fondo EPS intervenidas. Sin montos específicos."},lopez:{s:"yellow",t:"Fondo de rescate. Nuevo estudio actuarial. Sin monto detallado."},valencia:{s:"green",t:"Titularización deuda. +1 punto aportes salud. Eliminación exención 3-7 SMLMV. Recursos frescos permanentes."},espriella:{s:"yellow",t:"Rescate $10B. Financiación: recorte Estado 40%, anticorrupción $20-25B, Plan Colombia II. Altamente ambicioso."}},
+innovacion:{cepeda:{s:"gray",t:"Sin propuestas."},barreras:{s:"yellow",t:"Plataformas digitales tipo Rappi para medicamentos."},fajardo:{s:"green",t:"Interoperabilidad HC. Telemedicina. IA datos. MIPRES modernizado."},lopez:{s:"green",t:"Historia clínica única digital con IA. Sistema de información unificado, público e interoperable."},valencia:{s:"yellow",t:"Redes integradas territorialmente."},espriella:{s:"yellow",t:"Telemedicina satelital zonas apartadas. APP hospitales."}},
+aps:{cepeda:{s:"yellow",t:"Infraestructura hospitalaria territorial."},barreras:{s:"green",t:"APS preventiva. Acceso al agua, nutrición y condiciones de vida."},fajardo:{s:"green",t:"Redes territoriales. Medicina familiar. Salud mental. Prioridad: Catatumbo, Cauca, Chocó."},lopez:{s:"green",t:"Enfoque preventivo y territorial. Equipos de salud física, mental y familiar en barrios y veredas."},valencia:{s:"green",t:"APS integrada en aseguramiento. Prevención."},espriella:{s:"yellow",t:"Prevención basada en deporte y nutrición desde infancia."}},
+transparencia:{cepeda:{s:"yellow",t:"Sistema Nacional contra Macrocorrupción. Vigilancia ciudadana. Monitoreo especial a recursos de salud."},barreras:{s:"yellow",t:"Reglas claras y consensos. Sistema de información del sector."},fajardo:{s:"green",t:"Plataforma digital transparencia. Rendición de cuentas permanente. Rastrear cada peso invertido."},lopez:{s:"green",t:"Transparencia total EPS. Trazabilidad. Auditoría ciudadana en tiempo real."},valencia:{s:"green",t:"Certificación calidad. Giro directo condicional como sanción."},espriella:{s:"yellow",t:"Auditoría técnica implacable a EPS."}}
 };
 
 const consensos=[
-{title:"Mantener sistema mixto de aseguramiento",cnt:"4 de 6 candidatos (Fajardo, López, Valencia, De la Espriella)",desc:"La mayoría propone mantener o mejorar el sistema mixto. Solo Cepeda (100% público) y Barreras (eliminar EPS 'como existen hoy') proponen transformaciones radicales. Consenso sólido para incidencia AFIDRO."},
-{title:"Plan de estabilización financiera inmediato",cnt:"5 de 6 candidatos",desc:"Todos excepto Cepeda proponen alguna forma de rescate o inyección de recursos. Fajardo: auditorías + punto final. López: fondo de rescate. Valencia: titularización. De la Espriella: $10B. El pago de deudas es transversal."},
-{title:"Atención primaria y prevención",cnt:"5 de 6 candidatos",desc:"Barreras, Fajardo, López, Valencia y De la Espriella mencionan fortalecer APS. Tema seguro para industria."},
-{title:"Transparencia y trazabilidad financiera",cnt:"5 de 6 candidatos",desc:"Fajardo, López, Valencia, De la Espriella y Barreras proponen mecanismos de transparencia. Favorable para actores que operan correctamente."},
-{title:"Despolitización de la gestión del sistema",cnt:"4 de 6 candidatos",desc:"Fajardo, López, Valencia y De la Espriella proponen gerencia técnica no politizada. Reduce incertidumbre regulatoria para el sector."}];
+{title:"Mayoría a favor de preservar el aseguramiento mixto con EPS",cnt:"5 de 6 candidatos",desc:"Todos excepto Cepeda plantean mantener modelo mixto con EPS públicas y privadas, sujeto a mayores exigencias de auditoría, transparencia y resultados. Cepeda es quien más se aproxima a mayor control estatal, pero incluso él acepta un esquema con participación de EPS subordinadas. Consenso sólido para incidencia."},
+{title:"La deuda y la UPC: núcleos de la agenda inmediata",cnt:"6 de 6 candidatos",desc:"Todas las campañas coinciden en que la salida pasa por un mecanismo creíble de pago de la deuda y revisión técnica de la UPC. Fondos de rescate (López), acuerdos de punto final (Fajardo), titularización (Valencia), planes de choque (De la Espriella, Cepeda) y pagos directos (Barreras). Estas decisiones impactarán directamente a aseguradores, prestadores, talento humano y proveedores."},
+{title:"Medicamentos y talento humano: principal campo de tensión",cnt:"6 de 6 candidatos",desc:"Convergencia en la urgencia de asegurar disponibilidad de medicamentos y mejorar condiciones del talento humano, pero con instrumentos distintos: compras masivas, acuerdos de acceso administrado, producción nacional, negociación de patentes, salarios mínimos y bonificaciones. Según cómo se regulen, pueden mejorar el acceso o generar desequilibrios en la cadena."},
+{title:"Fajardo, López y Valencia: propuestas más estructuradas",cnt:"Hallazgo clave",desc:"Estos tres programas dan señales de continuidad del modelo con ajustes profundos, más que de ruptura. Fajardo: hoja de ruta más completa con institucionalidad para UPC y punto final. López: cuidado, prevención y planes basados en evidencia. Valencia: instrumentos financieros (titularización) y diseño fino de UPC y aseguramiento."},
+{title:"Cepeda, Barreras y De la Espriella: mayores grados de incertidumbre",cnt:"Hallazgo clave",desc:"Barreras combina conocimiento del sistema con posturas que podrían reconfigurar la política de medicamentos y producción nacional. De la Espriella prioriza choque financiero con menos desarrollo técnico en componentes estructurales. Cepeda, sin capítulo de salud, plantea la mayor incertidumbre desde una crítica frontal a la Ley 100."},
+{title:"Ventana trascendental para el diálogo entre actores",cnt:"Contexto estratégico",desc:"Como no ha ocurrido en las últimas tres décadas, la salud es hoy protagonista del debate electoral a la Presidencia. Ninguna campaña tiene todas las respuestas y la implementación de cualquier reforma requerirá acuerdos con EPS, IPS, talento humano, industria, pacientes, academia y entes territoriales. Momento para fortalecer espacios de diálogo, documentar evidencia e identificar puntos de consenso."}];
 
 const actorLabels={eps:"EPS / Aseguradoras",prest:"Prestadores (IPS/Hospitales)",farma:"Industria Farmacéutica",pac:"Pacientes/Usuarios",talento:"Talento Humano en Salud",tec:"Proveedores Tecnología"};
 
@@ -467,7 +477,7 @@ function renderOverview(){
         <span class="cc-model ${c.spectrum}">${c.model}</span>
       </div>
       <div class="cc-stance">${c.stance}</div>
-      <div style="font-size:10px;color:var(--primary);margin-top:6px;font-weight:500;">⚖️ ${c.viab.tipo}</div>
+      <div style="font-size:10px;color:var(--accent);margin-top:6px;font-weight:600;">⚖️ ${c.viab.tipo}</div>
     </div>`).join('');
   renderSpectrum();
 }
@@ -497,7 +507,8 @@ function openMo(id){
     <div class="md-sec"><h3>Propuestas</h3><div class="md-props">${c.proposals.map(p=>`<div class="prop"><h4>${p.t}</h4><p>${p.d}</p></div>`).join('')}</div></div>
     <div class="md-sec"><h3>Equipo Programático</h3><p>${c.team}</p></div>
     <div class="md-sec"><h3>Análisis de Viabilidad</h3><div class="md-sw"><div class="s-box"><h4>FORTALEZAS</h4>${c.str}</div><div class="w-box"><h4>DEBILIDADES</h4>${c.weak}</div></div></div>
-    <div class="md-sec"><h3>Viabilidad Legislativa</h3><div style="background:var(--plight);border:1px solid rgba(44,90,160,.15);border-radius:8px;padding:12px 14px;"><div style="font-size:11px;font-weight:600;color:var(--primary);margin-bottom:4px;">${c.viab.tipo}</div><p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0;">${c.viab.detalle}</p></div></div>
+    ${c.opps?`<div class="md-sec"><h3>Oportunidades y Riesgos para el Sector</h3><div class="md-sw"><div class="s-box"><h4>OPORTUNIDADES</h4>${c.opps}</div><div class="w-box"><h4>RIESGOS</h4>${c.riesgos}</div></div></div>`:''}
+    <div class="md-sec"><h3>Viabilidad Legislativa</h3><div style="background:var(--accent-light);border:1px solid rgba(232,115,74,.15);border-radius:8px;padding:12px 14px;"><div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:4px;">${c.viab.tipo}</div><p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0;">${c.viab.detalle}</p></div></div>
     <div class="md-sec"><h3>Conclusión para el Sector</h3><p>${c.concl}</p></div>`;
   document.getElementById('moOv').classList.add('open');
 }
@@ -528,8 +539,8 @@ function runCmp(){
 
 function renderRisk(){
   const riskSummaries={
-    cepeda:"Máximo riesgo regulatorio y político del conjunto. Sistema 100% público implica transformación radical del aseguramiento. Presión simultánea en regulación, fiscalidad y control político sin ventanas de estabilidad normativa.",
-    barreras:"Riesgo alto concentrado en la dimensión regulatoria por eliminación de EPS. Su perfil como médico y conocedor del sistema modera el riesgo político. La falta de cuantificación financiera eleva la incertidumbre fiscal.",
+    cepeda:"Máximo riesgo regulatorio y político del conjunto. Acepta EPS bajo control total del Estado, no las elimina. Plan de Gobierno sin capítulo de salud: alta imprevisibilidad en política de medicamentos. Mayor control estatal puede derivar en fijación de precios o restricciones a propiedad intelectual.",
+    barreras:"Riesgo alto en medicamentos: negociación de patentes y producción nacional pueden crear competencia asimétrica con industria innovadora. Sin embargo, recupera aseguramiento individual mixto lo cual modera el riesgo para EPS. Como médico y autor de Ley Estatutaria tiene autoridad técnica que reduce riesgo político.",
     fajardo:"Perfil de riesgo homogéneo y moderado. Mayor predictibilidad regulatoria e institucional del conjunto. Reformas graduales sin rupturas normativas. Presión regulatoria concentrada en auditorías y transparencia, no en cambios estructurales.",
     lopez:"Riesgo moderado y equilibrado. Mantiene modelo mixto con controles estrictos. La autoridad técnico-científica independiente reduce el riesgo político. Transparencia financiera obligatoria genera presión regulatoria específica sobre EPS.",
     valencia:"Menor riesgo regulatorio para el sector. Contrarreforma que preserva statu quo con mejoras graduales. Titularización de deuda reduce presión fiscal inmediata. Único candidato con proyecto de ley radicado, lo que aumenta predictibilidad.",
@@ -552,7 +563,7 @@ function renderRisk(){
   const g=document.getElementById('rpGrid');
   g.innerHTML=C.map(c=>`<div class="rp-card"><h3><img src="${P[c.id]}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;">${c.nm} <span class="risk-idx ${c.riskLevel}" style="font-size:10px;">${c.riskSalud}</span></h3><div class="rp-sub">${c.party} · ${c.model}</div><canvas id="rk_${c.id}"></canvas><p style="font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);">${riskSummaries[c.id]}</p></div>`).join('');
   C.forEach(c=>{
-    new Chart(document.getElementById(`rk_${c.id}`).getContext('2d'),{type:'radar',data:{labels:['Regulatorio','Fiscal','Político','Propiedad'],datasets:[{data:[c.risks.reg,c.risks.fis,c.risks.pol,c.risks.prop],backgroundColor:sColors[c.spectrum]+'20',borderColor:sColors[c.spectrum],borderWidth:2,pointBackgroundColor:sColors[c.spectrum],pointRadius:4}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{r:{beginAtZero:true,max:5,ticks:{stepSize:1,display:true,font:{size:9}},grid:{color:'rgba(0,0,0,.06)'},angleLines:{color:'rgba(0,0,0,.06)'},pointLabels:{color:'#5a6477',font:{size:11,family:'DM Sans'}}}}}});
+    new Chart(document.getElementById(`rk_${c.id}`).getContext('2d'),{type:'radar',data:{labels:['Regulatorio','Fiscal','Político','Propiedad'],datasets:[{data:[c.risks.reg,c.risks.fis,c.risks.pol,c.risks.prop],backgroundColor:sColors[c.spectrum]+'20',borderColor:sColors[c.spectrum],borderWidth:2,pointBackgroundColor:sColors[c.spectrum],pointRadius:4}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{r:{beginAtZero:true,max:5,ticks:{stepSize:1,display:true,font:{size:9}},grid:{color:'rgba(0,0,0,.06)'},angleLines:{color:'rgba(0,0,0,.06)'},pointLabels:{color:'#5a6477',font:{size:11,family:'Plus Jakarta Sans'}}}}}});
   });
 }
 
@@ -570,7 +581,7 @@ function toggleAl(el){el.classList.toggle('open');el.nextElementSibling.classLis
 function renderImpact(){
   const impSummaries={
     cepeda:"Sistema 100% público eliminaría EPS como aseguradoras. Industria farmacéutica enfrentaría presión sobre precios y patentes por lógica redistributiva. Pacientes beneficiados en discurso pero con riesgo de deterioro operativo en transición.",
-    barreras:"Eliminación de EPS impacta negativamente al aseguramiento. Plataformas digitales de medicamentos (tipo Rappi) disruptivas para cadena farmacéutica tradicional. Cuestiona precios ligados a patentes. Proveedores tecnológicos beneficiados.",
+    barreras:"Recupera aseguramiento individual mixto, favorable para EPS que operen bien. Pago directo a farmacias e industria sin intermediarios mejoraría flujos de caja. Principal riesgo: negociación de patentes y producción nacional pueden crear competencia asimétrica con industria innovadora.",
     fajardo:"Escenario más equilibrado. Pago basado en valor y fortalecimiento del IETS benefician a industria y prestadores. Auditorías a EPS intervenidas presionan solo a actores con problemas. Talento humano y tecnología son los más beneficiados.",
     lopez:"Modelo mixto con fondo de rescate beneficia prestadores. Autoridad técnico-científica independiente es favorable para industria farmacéutica. Transparencia obligatoria presiona a EPS con prácticas opacas. Proveedores tecnológicos beneficiados por HC interoperable.",
     valencia:"Titularización de deuda y contratos a 20 años benefician prestadores directamente. UPC diferencial corrige incentivos perversos. Salario mínimo médicos beneficia talento humano. Modelo más conservador para statu quo del sector.",
