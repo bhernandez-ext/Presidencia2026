@@ -95,8 +95,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .al-hdr:hover{background:var(--border);}
 .al-hdr .ic{font-size:15px;transition:transform .3s;}
 .al-hdr:hover .ic{transform:scale(1.2);}
-.al-hdr .tgl{margin-left:auto;color:var(--dim);transition:transform .3s cubic-bezier(.22,1,.36,1);font-size:10px;}
+.al-hdr .tgl{color:var(--dim);transition:transform .3s cubic-bezier(.22,1,.36,1);font-size:10px;}
 .al-hdr.open .tgl{transform:rotate(180deg);}
+.al-lbl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .al-body{display:none;overflow:hidden;}
 .al-body.open{display:block;animation:slideUp .3s ease;}
 .al-row{display:grid;grid-template-columns:160px 70px 1fr;gap:1px;border-top:1px solid var(--border);transition:background .2s;}
@@ -109,8 +110,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .sd.yellow{background:var(--yellow);box-shadow:0 0 8px rgba(245,158,11,.4);}
 .sd.red{background:var(--red);box-shadow:0 0 8px rgba(239,68,68,.4);animation:pulse 2s ease-in-out infinite;}
 .sd.gray{background:var(--dim);}
-.al-sum{display:flex;gap:10px;font-size:10px;margin-left:auto;}
-.al-sum span{display:flex;align-items:center;gap:3px;}
+.al-sum{display:flex;gap:0;font-size:10px;}
+.al-sum span{display:flex;align-items:center;gap:3px;min-width:36px;justify-content:center;}
 /* Spectrum */
 .spectrum{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 24px;margin-bottom:24px;box-shadow:var(--shadow);}
 .sp-line{position:relative;height:80px;margin:12px 0 28px;background:linear-gradient(90deg,var(--izq) 0%,var(--cizq) 35%,#94a3b8 50%,var(--cder) 65%,var(--der) 100%);border-radius:20px;opacity:.12;}
@@ -400,7 +401,7 @@ viab:{tipo:"Mixto: gestión + ley para autoridad técnica",detalle:"Sistema mixt
 {id:"valencia",nm:"Paloma Valencia",vp:"Juan Daniel Oviedo",prof:"Abogada y filósofa",party:"Centro Democrático",spectrum:"centro-derecha",model:"Contrarreforma Institucional",stars:5,
 stance:"\"El sistema necesita ajustes profundos, no destrucción\". Proyecto de Ley Estatutaria de contrarreforma radicado con 20 congresistas.",
 scenario:"Favorable para statu quo con mejoras. Menor riesgo regulatorio. Titularización deuda beneficia prestadores con cartera. Certificación calidad favorece instituciones bien gestionadas. UPC diferencial corrige incentivos perversos.",
-proposals:[{t:"Libertad de elección",d:"Garantía constitucional: ciudadanos deciden entre EPS pública, privada o mixta."},{t:"UPC diferencial por riesgo",d:"Cálculo actuarial con perfil epidemiológico individual. Ajuste por condiciones, edad, zona."},{t:"Salario mínimo médicos",d:"Piso mínimo de protección laboral. Escalafón por especialización."},{t:"Titularización deuda",d:"Reconocimiento deuda a EPS e IPS. +1 punto en aportes de salud."},{t:"Certificación de calidad",d:"EPS/IPS que cumplan estándares obtienen contratos a 20 años."},{t:"Giro directo condicional",d:"Mecanismo de sanción si EPS no pagan en plazos."},{t:"Redes de servicios",d:"Integrales e integradas, organizadas territorialmente. APS integrada en aseguramiento."},{t:"Hospitales padrino con IA",d:"Conectar centros de salud remotos con especialistas en grandes hospitales mediante inteligencia artificial, reduciendo traslados."},{t:"Control tutelas y presupuestos máximos",d:"Comité de expertos o IA para evaluar costo-beneficio de nuevos medicamentos y tecnologías, reduciendo gasto en tratamientos experimentales ordenados por jueces."}],
+proposals:[{t:"Libertad de elección",d:"Garantía constitucional: ciudadanos deciden entre EPS pública, privada o mixta."},{t:"UPC diferencial por riesgo",d:"Cálculo actuarial con perfil epidemiológico individual. Ajuste por condiciones, edad, zona."},{t:"Salario mínimo médicos",d:"Piso mínimo de protección laboral. Escalafón por especialización."},{t:"Titularización deuda",d:"Reconocimiento deuda a EPS e IPS. +1 punto en aportes de salud."},{t:"Certificación de calidad",d:"EPS/IPS que cumplan estándares obtienen contratos a 20 años."},{t:"Giro directo condicional",d:"Mecanismo de sanción si EPS no pagan en plazos."},{t:"Redes de servicios",d:"Integrales e integradas, organizadas territorialmente. APS integrada en aseguramiento."},{t:"Hospitales padrino con IA",d:"Conectar centros de salud remotos con especialistas en grandes hospitales mediante inteligencia artificial, reduciendo traslados."},{t:"Control tutelas y presupuestos máximos",d:"Comité de expertos o IA para evaluar costo-beneficio de nuevos medicamentos y tecnologías, reduciendo gasto en tratamientos experimentales ordenados por jueces."},{t:"Investigación clínica e industrialización",d:"Integrar la investigación clínica como parte de la estrategia de industrialización del país. Visión de la salud como sector productivo."},{t:"Reforma INVIMA",d:"Reconoce el problema del INVIMA. Implementar modelo de Reliance y habilitar terceros autorizados para apoyar la gestión regulatoria, agilizando registros sanitarios."},{t:"Fortalecimiento del IETS",d:"Reconoce el valor del Instituto de Evaluación Tecnológica en Salud y la necesidad de modificarlo para fortalecer la evaluación de tecnologías."}],
 team:"José Daniel Álzate Suárez (Ex Keralty). Juan Diego Álvarez.",str:"Única con proyecto de ley radicado. Titularización es mecanismo financiero más sofisticado. Aumento cotización genera recursos frescos permanentes. UPC diferenciada técnicamente correcta.",weak:"Titularización aumenta deuda pública. Contratos 20 años generan rigideces. UPC diferencial aumenta complejidad administrativa.",
 opps:"UPC diferenciada y cobertura enfermedades huérfanas/crónicas son incentivos directos para acceso. Titularización mejoraría liquidez de toda la cadena. Libertad de elección compatible con distribución de innovadores.",riesgos:"Compra masiva de medicamentos podría favorecer modelo centralizado con énfasis en genéricos que limite acceso a moléculas innovadoras.",concl:"Propuesta más detallada desde perspectiva técnico-financiera. Cobertura enfermedades crónicas/huérfanas y UPC diferenciada con mayor alineación con agenda de acceso.",
 radar:[8,4,7,4,6,5,5],riskSalud:2.0,riskLevel:"bajo",
@@ -573,7 +574,7 @@ function renderAlertas(){
     const counts={green:0,yellow:0,red:0,gray:0};
     C.forEach(c=>{if(td[c.id])counts[td[c.id].s]++;});
     const rows=C.map(c=>{const d=td[c.id];if(!d)return'';return`<div class="al-row"><div class="al-c nm"><span class="cc-model ${c.spectrum}" style="font-size:7px;padding:1px 4px;">${sLabels[c.spectrum].charAt(0)}</span>${c.nm}</div><div class="al-c sg"><div class="sd ${d.s}"></div></div><div class="al-c" style="color:var(--muted)">${d.t}</div></div>`;}).join('');
-    return`<div class="al-theme"><div class="al-hdr ${idx===0?'open':''}" onclick="toggleAl(this)"><span class="ic">${t.ic}</span>${t.l}<div class="al-sum"><span><div class="sd green" style="width:7px;height:7px;"></div>${counts.green}</span><span><div class="sd yellow" style="width:7px;height:7px;"></div>${counts.yellow}</span><span><div class="sd red" style="width:7px;height:7px;"></div>${counts.red}</span></div><span class="tgl">▼</span></div><div class="al-body ${idx===0?'open':''}">${rows}</div></div>`;
+    return`<div class="al-theme"><div class="al-hdr ${idx===0?'open':''}" onclick="toggleAl(this)"><span class="ic">${t.ic}</span><span class="al-lbl">${t.l}</span><div class="al-sum"><span><div class="sd green" style="width:7px;height:7px;"></div>${counts.green}</span><span><div class="sd yellow" style="width:7px;height:7px;"></div>${counts.yellow}</span><span><div class="sd red" style="width:7px;height:7px;"></div>${counts.red}</span></div><span class="tgl">▼</span></div><div class="al-body ${idx===0?'open':''}">${rows}</div></div>`;
   }).join('');
 }
 function toggleAl(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open');}
