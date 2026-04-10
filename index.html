@@ -125,9 +125,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 /* Heatmap */
 .hm{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);animation:slideUp .4s cubic-bezier(.22,1,.36,1) both;}
 .hm th{background:var(--elevated);padding:10px 12px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.3px;color:var(--muted);text-align:center;border-bottom:1px solid var(--border);}
-.hm th:first-child{text-align:left;}
+.hm th:first-child{text-align:left;min-width:180px;}
 .hm td{padding:10px 12px;text-align:center;font-size:13px;font-weight:700;border-bottom:1px solid var(--border);transition:all .3s;}
-.hm td:first-child{text-align:left;font-weight:500;font-size:12px;background:var(--card);}
+.hm td:first-child{text-align:left;font-weight:500;font-size:12px;background:var(--card);min-width:180px;white-space:nowrap;}
 .hm tr:last-child td{border-bottom:none;}
 .hm tr:hover td{filter:brightness(.97);}
 .hm td.r1{background:rgba(16,185,129,.12);color:#047857;}
@@ -286,7 +286,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
   <p class="ssub">An&aacute;lisis de 4 variables de riesgo para el sector salud (escala 1&ndash;5). Framework adaptado del modelo ORZA de an&aacute;lisis comparado de programas de gobierno.</p>
   <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:20px;box-shadow:var(--shadow);">
     <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin-bottom:8px;font-weight:700;">Metodolog&iacute;a</h3>
-    <p style="font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:10px;">Este m&oacute;dulo eval&uacute;a el riesgo para el sector salud en 4 dimensiones, adaptando el framework de an&aacute;lisis comparado de programas de gobierno de ORZA (orza.com.co). Cada variable se califica en escala 1&ndash;5 (1 = riesgo m&iacute;nimo, 5 = riesgo m&aacute;ximo) a partir de los programas de gobierno oficiales y declaraciones p&uacute;blicas de los candidatos.</p>
+    <p style="font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:10px;">Este m&oacute;dulo eval&uacute;a el riesgo para el sector salud en 4 dimensiones, adaptando el framework de an&aacute;lisis comparado de programas de gobierno de ORZA (orza.com.co). Cada variable se califica en escala 1&ndash;5 (1 = riesgo m&iacute;nimo, 5 = riesgo m&aacute;ximo) a partir de los programas de gobierno oficiales y declaraciones p&uacute;blicas de los candidatos. Incluye adem&aacute;s una capa de percepci&oacute;n de riesgo para la industria calificada por compa&ntilde;&iacute;as afiliadas (n=6).</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;">
       <div style="background:var(--elevated);padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5;"><strong style="color:var(--text);">Regulatorio</strong><br><span style="color:var(--muted);">Nuevas regulaciones, controles sectoriales, licencias o restricciones que alteren reglas de mercado.</span></div>
       <div style="background:var(--elevated);padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5;"><strong style="color:var(--text);">Fiscal</strong><br><span style="color:var(--muted);">Cambios tributarios, cargas parafiscales, eliminaci&oacute;n de beneficios o presi&oacute;n fiscal diferencial.</span></div>
@@ -361,7 +361,7 @@ proposals:[{t:"Reforma estructural al sistema",d:"Modelo de aseguramiento colect
 team:"No identificado públicamente. Plan de Gobierno no incluye asesores en salud.",str:"Respaldo del aparato gubernamental actual.",weak:"Ausencia de propuestas diferenciadas. Gran dependencia de percepción del Gobierno Petro.",
 opps:"Sistema mixto con EPS es más favorable que eliminación total. Anticorrupción puede mejorar flujos de pago. Diagnóstico Nueva EPS reduce decisiones intempestivas.",riesgos:"Ley 100 como 'negocio' es contraria al modelo de mercado. Continuidad Pacto Histórico implica retomar reforma archivada. Mayor control estatal puede derivar en fijación de precios o restricciones a PI.",concl:"Escenario de mayor riesgo para actores del aseguramiento privado. Importante monitorear evolución de equipo técnico.",
 radar:[2,1,1,1,1,2,2],riskSalud:3.5,riskLevel:"alto",
-risks:{reg:4,fis:3,pol:4,prop:3},
+risks:{reg:4,fis:3,pol:4,prop:3},irisks:{reg:4.8,fis:4.5,pol:4.5,prop:4.7},iriskSalud:4.62,comboRisk:4.1,
 impact:{eps:-3,prest:-2,farma:-2,pac:1,talento:0,tec:-1},
 viab:{tipo:"Requiere reforma legal profunda",detalle:"Sistema 100% público exige reforma a Ley 100 y posiblemente acto legislativo. Sin proyecto radicado. Alta dependencia de mayorías parlamentarias que no están garantizadas."}},
 
@@ -372,7 +372,7 @@ proposals:[{t:"Recuperar aseguramiento individual mixto",d:"Con auditorías para
 team:"Coord. programático: Diego Guevara. Equipo político: Ángel Becassino, Antonio Solá. Barreras concentra conocimiento sectorial como médico y autor Ley Estatutaria.",str:"Mayor conocimiento personal del sistema. Médico y autor Ley Estatutaria. Autoridad técnica y política.",weak:"Falta cuantificación financiera. No define qué entidad reemplaza funciones de aseguramiento.",
 opps:"Pago directo a farmacias e industria mejoraría flujos de caja. Recuperación aseguramiento individual garantiza continuidad. Énfasis en atención preventiva.",riesgos:"Negociación de patentes puede implicar licencias obligatorias o presión sobre precios. Producción nacional puede crear competencia asimétrica con industria innovadora. Eliminación integración vertical genera turbulencias en distribución.",concl:"Mayor riesgo: postura sobre negociación de patentes y producción nacional. Se recomienda diálogo técnico directo para posicionar valor del ecosistema de innovación.",
 radar:[5,6,3,4,2,5,3],riskSalud:3.0,riskLevel:"alto",
-risks:{reg:3,fis:3,pol:3,prop:2},
+risks:{reg:3,fis:3,pol:3,prop:2},irisks:{reg:3.8,fis:3.2,pol:3.7,prop:4.2},iriskSalud:3.73,comboRisk:3.4,
 impact:{eps:-1,prest:1,farma:-2,pac:1,talento:1,tec:1},
 viab:{tipo:"Requiere reforma legal",detalle:"Eliminación de EPS requiere modificación del marco de aseguramiento (Ley 100/Ley 1122). Experiencia legislativa como expresidente del Senado facilita el trámite, pero sin cuantificación financiera el debate parlamentario se complica."}},
 
@@ -383,7 +383,7 @@ proposals:[{t:"Plan Recuperación – Primeros 100 días",d:"Puesto de Mando Pre
 team:"Equipo más robusto y verificable: Luz María Agudelo (exsecretaria Salud Medellín/Antioquia). Andrés Vecino (sistemas de salud). Arturo Montejo (MSc Políticas de Salud, LSE). Bernardo Useche (Centro Estudios del Trabajo). Marcela Garcés (MSc Salud Pública, U. Illinois). Víctor Correa (Gobierno y Políticas Públicas). Javier Criales (Soc. Col. Pediatría Valle). Ángela Molina (Epidemiología, UdeA).",str:"Propuesta más desarrollada y técnica. Equipo sólido con experiencia ejecutiva. No requiere reforma legal profunda.",weak:"No especifica montos de inversión. No aborda deuda estructural directamente.",
 opps:"Puesto de Mando Presidencial con foco en medicamentos es punto de entrada para agenda de acceso. UPC independiente puede incorporar costo real de innovadores. Diálogo con actores es la vía más favorable para interlocución formal. Modernización MIPRES agilizaría prescripción.",riesgos:"Acuerdos de acceso administrado para alto costo según diseño pueden derivar en fijación de precios. Auditoría a EPS puede presionar contratos comerciales con industria.",concl:"Mayor solvencia técnica y equipo más preparado. Postura pragmática y dialogante es la más favorable para actores institucionales del sistema.",
 radar:[6,5,5,7,5,7,8],riskSalud:2.75,riskLevel:"medio",
-risks:{reg:3,fis:2,pol:2,prop:1},
+risks:{reg:3,fis:2,pol:2,prop:1},irisks:{reg:2.7,fis:2.7,pol:1.8,prop:2.2},iriskSalud:2.35,comboRisk:2.5,
 impact:{eps:1,prest:2,farma:2,pac:3,talento:3,tec:3},
 viab:{tipo:"Mayormente gestión administrativa",detalle:"La mayoría de propuestas no requieren reforma legal: recálculo de UPC, auditorías, MIPRES, telemedicina son competencia del ejecutivo. Acuerdo de punto final podría requerir ley. Viabilidad alta sin depender del Congreso."}},
 
@@ -394,7 +394,7 @@ proposals:[{t:"Sistema Mixto e Integral",d:"Gestoras y prestadoras con límites 
 team:"Alejandro Gómez (exsecretario Salud Bogotá).",str:"Viables sin reforma legal profunda. Experiencia gestión COVID.",weak:"No especifica monto fondo de rescate. HC interoperable requiere inversión significativa.",
 opps:"Fondo de rescate resolvería cuello de botella más crítico: pago a prestadores y proveedores. Planes basados en ciencia abren espacio para diálogo técnico. Modelo mixto garantiza continuidad de EPS.",riesgos:"Planes de beneficios explícitos podrían restringir medicamentos de alto costo no incluidos en plan básico.",concl:"Enfoque pragmático y modelo mixto compatible con misionalidades de actores del sistema. Pago de deuda, estudio actuarial y planes basados en ciencia alineados con agenda de acceso.",
 radar:[6,4,5,7,3,4,7],riskSalud:2.5,riskLevel:"medio",
-risks:{reg:2,fis:2,pol:2,prop:1},
+risks:{reg:2,fis:2,pol:2,prop:1},irisks:{reg:3.3,fis:2.8,pol:3.2,prop:2.5},iriskSalud:2.95,comboRisk:2.7,
 impact:{eps:0,prest:2,farma:1,pac:2,talento:1,tec:3},
 viab:{tipo:"Mixto: gestión + ley para autoridad técnica",detalle:"Sistema mixto, transparencia y fondo de rescate son viables por decreto/gestión. La creación de autoridad técnico-científica independiente probablemente requiere ley. HC interoperable requiere reglamentación pero no ley nueva."}},
 
@@ -405,7 +405,7 @@ proposals:[{t:"Libertad de elección",d:"Garantía constitucional: ciudadanos de
 team:"José Daniel Álzate Suárez (Ex Keralty). Juan Diego Álvarez.",str:"Única con proyecto de ley radicado. Titularización es mecanismo financiero más sofisticado. Aumento cotización genera recursos frescos permanentes. UPC diferenciada técnicamente correcta.",weak:"Titularización aumenta deuda pública. Contratos 20 años generan rigideces. UPC diferencial aumenta complejidad administrativa.",
 opps:"UPC diferenciada y cobertura enfermedades huérfanas/crónicas son incentivos directos para acceso. Titularización mejoraría liquidez de toda la cadena. Libertad de elección compatible con distribución de innovadores.",riesgos:"Compra masiva de medicamentos podría favorecer modelo centralizado con énfasis en genéricos que limite acceso a moléculas innovadoras.",concl:"Propuesta más detallada desde perspectiva técnico-financiera. Cobertura enfermedades crónicas/huérfanas y UPC diferenciada con mayor alineación con agenda de acceso.",
 radar:[8,4,7,4,6,5,5],riskSalud:2.0,riskLevel:"bajo",
-risks:{reg:2,fis:2,pol:2,prop:1},
+risks:{reg:2,fis:2,pol:2,prop:1},irisks:{reg:2.2,fis:2.0,pol:1.7,prop:1.3},iriskSalud:1.8,comboRisk:1.9,
 impact:{eps:2,prest:3,farma:1,pac:2,talento:3,tec:1},
 viab:{tipo:"Ley Estatutaria radicada",detalle:"Única candidata con proyecto de ley ya radicado (Ley Estatutaria de contrarreforma con 20 congresistas). Titularización requiere ley. UPC diferencial y certificación son reglamentables por decreto. Mayor predictibilidad legislativa del conjunto."}},
 
@@ -416,7 +416,7 @@ proposals:[{t:"Plan choque 90 días",d:"Reactivar tratamientos críticos. Sumini
 team:"Iván Sánchez. Claudia Amaya.",str:"Programa más completo de lo que declaraciones sugieren. Seis componentes cubren áreas críticas. APP para hospitales con precedentes exitosos. Salud es 2do pilar de 10.",weak:"10 billones insuficientes (estimaciones: 30-50B). Recortar Estado 40% incompatible con inversión en salud. Eliminación 4x1000 y gasolina reduce ingresos fiscales.",
 opps:"Entrega de medicamentos esenciales y pago salarios hospitalarios favorecen cadena farmacéutica. APP para hospitales crean oportunidades. Discurso de libre empresa compatible con innovación farmacéutica.",riesgos:"Liquidación masiva de EPS puede generar transición caótica. Ausencia de equipo técnico aumenta incertidumbre en política de medicamentos. Preferencia compras públicas nacionales puede extenderse al sector farmacéutico.",concl:"Seis componentes cubren áreas urgentes pero carece de propuestas sobre UPC, plan de beneficios y política de medicamentos. Riesgo de inviabilidad fiscal persiste.",
 radar:[5,5,4,3,3,3,3],riskSalud:2.5,riskLevel:"medio",
-risks:{reg:2,fis:3,pol:3,prop:1},
+risks:{reg:2,fis:3,pol:3,prop:1},irisks:{reg:2.5,fis:3.0,pol:3.5,prop:2.0},iriskSalud:2.75,comboRisk:2.6,
 impact:{eps:2,prest:1,farma:1,pac:0,talento:1,tec:0},
 viab:{tipo:"Decretos + ley para Gran Acuerdo",detalle:"Anulación de decretos Petro es viable por vía administrativa. Rescate $10B requiere reajuste presupuestal (no necesariamente ley). Gran Acuerdo Nacional y Ley de punto final sí requieren trámite legislativo. Recorte del 40% del Estado requeriría reformas profundas con alto riesgo de bloqueo en Congreso fragmentado."}}
 ];
@@ -471,7 +471,7 @@ function renderOverview(){
           <div class="cc-pt">${c.party}</div>
           <div class="cc-vp">VP: ${c.vp}</div>
         </div>
-        <span class="risk-idx ${c.riskLevel}" title="Índice riesgo salud">${c.riskSalud}</span>
+        <span class="risk-idx ${c.riskLevel}" title="Índice riesgo combinado">${c.comboRisk||c.riskSalud}</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
         <div class="stars">${Array(5).fill(0).map((_,i)=>`<div class="star ${i<c.stars?'f':'e'}"></div>`).join('')}</div>
@@ -500,7 +500,7 @@ function openMo(id){
     <button class="md-x" onclick="closeMo()">✕</button>
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">
       <img class="av" src="${P[c.id]}" style="width:60px;height:60px;">
-      <div><h2>${c.nm}</h2><div class="md-pt">${c.party} · ${c.prof} · VP: ${c.vp}<br><span class="cc-model ${c.spectrum}">${c.model}</span> · <span class="risk-idx ${c.riskLevel}">Riesgo salud: ${c.riskSalud}/5</span></div></div>
+      <div><h2>${c.nm}</h2><div class="md-pt">${c.party} · ${c.prof} · VP: ${c.vp}<br><span class="cc-model ${c.spectrum}">${c.model}</span> · <span class="risk-idx ${c.riskLevel}">Riesgo combinado: ${c.comboRisk||c.riskSalud}/5</span></div></div>
     </div>
     <div class="stars" style="margin-bottom:16px;">${Array(5).fill(0).map((_,i)=>`<div class="star ${i<c.stars?'f':'e'}"></div>`).join('')}<span style="font-size:11px;color:var(--dim);margin-left:6px;">Desarrollo programático</span></div>
     <div class="sc-box"><h3>¿Qué pasaría si gana ${c.nm.split(' ')[0]}?</h3><p>${c.scenario}</p></div>
@@ -525,7 +525,7 @@ function runCmp(){
   const rows=[
     {l:'Candidato',f:c=>`<div style="display:flex;align-items:center;gap:6px;"><img src="${P[c.id]}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;"><div><strong>${c.nm}</strong><br><span style="font-size:10px;color:var(--muted)">${c.party} · VP: ${c.vp}</span></div></div>`},
     {l:'Modelo',f:c=>`<span class="cc-model ${c.spectrum}">${c.model}</span>`},
-    {l:'Riesgo salud',f:c=>`<span class="risk-idx ${c.riskLevel}">${c.riskSalud}/5</span>`},
+    {l:'Riesgo combinado',f:c=>`<span class="risk-idx ${c.riskLevel}">${c.comboRisk||c.riskSalud}/5</span>`},
     {l:'Desarrollo',f:c=>`${'★'.repeat(c.stars)}${'☆'.repeat(5-c.stars)}`},
     {l:'Postura',f:c=>c.stance},
     {l:'Propuestas clave',f:c=>c.proposals.slice(0,4).map(p=>`<strong>${p.t}</strong>: ${p.d}`).join('<br><br>')},
@@ -553,18 +553,24 @@ function renderRisk(){
   function rClass(v){if(v<=1.5)return'r1';if(v<=2)return'r2';if(v<=3)return'r3';if(v<=4)return'r4';return'r5';}
   let hmH='<table class="hm"><thead><tr><th>Candidato</th>';
   varNames.forEach(v=>{hmH+='<th>'+v+'</th>';});
-  hmH+='<th>Promedio Salud</th></tr></thead><tbody>';
+  hmH+='<th class="hm-avg">Promedio</th></tr></thead><tbody>';
   C.forEach(c=>{
     hmH+='<tr><td style="display:flex;align-items:center;gap:6px;"><img src="'+P[c.id]+'" style="width:22px;height:22px;border-radius:50%;object-fit:cover;">'+c.nm+'</td>';
-    vars.forEach(v=>{hmH+='<td class="'+rClass(c.risks[v])+'">'+c.risks[v]+'</td>';});
-    hmH+='<td class="'+rClass(c.riskSalud)+' hm-avg">'+c.riskSalud+'</td></tr>';
+    vars.forEach(v=>{
+      const sv=c.risks[v];
+      const iv=c.irisks?c.irisks[v]:null;
+      hmH+='<td class="'+rClass(sv)+'" style="padding:6px 8px;line-height:1.6;"><div style="display:flex;align-items:center;gap:4px;justify-content:center;font-size:12px;"><span style="font-size:9px;color:var(--dim);font-weight:400;">Sector</span><strong>'+sv+'</strong></div>'+(iv!=null?'<div style="display:flex;align-items:center;gap:4px;justify-content:center;font-size:12px;"><span style="font-size:9px;color:#e8734a;font-weight:400;">Ind.</span><strong style="color:#e8734a;">'+iv+'</strong></div>':'')+'</td>';
+    });
+    const combo=c.comboRisk||c.riskSalud;
+    hmH+='<td class="'+rClass(combo)+' hm-avg" style="padding:6px 8px;line-height:1.6;"><div style="display:flex;align-items:center;gap:4px;justify-content:center;font-size:12px;"><span style="font-size:9px;color:var(--dim);font-weight:400;">Sector</span><strong>'+c.riskSalud+'</strong></div><div style="display:flex;align-items:center;gap:4px;justify-content:center;font-size:12px;"><span style="font-size:9px;color:#e8734a;font-weight:400;">Ind.</span><strong style="color:#e8734a;">'+(c.iriskSalud||'-')+'</strong></div><div style="border-top:1px solid rgba(0,0,0,.08);margin-top:4px;padding-top:3px;font-size:10px;color:var(--dim);">Combinado <strong style="color:var(--text);">'+combo+'</strong></div></td></tr>';
   });
   hmH+='</tbody></table>';
+  
   document.getElementById('riskHeatmap').innerHTML=hmH;
   const g=document.getElementById('rpGrid');
-  g.innerHTML=C.map(c=>`<div class="rp-card"><h3><img src="${P[c.id]}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;">${c.nm} <span class="risk-idx ${c.riskLevel}" style="font-size:10px;">${c.riskSalud}</span></h3><div class="rp-sub">${c.party} · ${c.model}</div><canvas id="rk_${c.id}"></canvas><p style="font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);">${riskSummaries[c.id]}</p></div>`).join('');
+  g.innerHTML=C.map(c=>`<div class="rp-card"><h3><img src="${P[c.id]}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;">${c.nm} <span class="risk-idx ${c.riskLevel}" style="font-size:10px;">${c.comboRisk||c.riskSalud}</span></h3><div class="rp-sub">${c.party} · ${c.model}</div><canvas id="rk_${c.id}"></canvas><p style="font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);">${riskSummaries[c.id]}</p></div>`).join('');
   C.forEach(c=>{
-    new Chart(document.getElementById(`rk_${c.id}`).getContext('2d'),{type:'radar',data:{labels:['Regulatorio','Fiscal','Político','Propiedad'],datasets:[{data:[c.risks.reg,c.risks.fis,c.risks.pol,c.risks.prop],backgroundColor:sColors[c.spectrum]+'20',borderColor:sColors[c.spectrum],borderWidth:2,pointBackgroundColor:sColors[c.spectrum],pointRadius:4}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{r:{beginAtZero:true,max:5,ticks:{stepSize:1,display:true,font:{size:9}},grid:{color:'rgba(0,0,0,.06)'},angleLines:{color:'rgba(0,0,0,.06)'},pointLabels:{color:'#5a6477',font:{size:11,family:'Plus Jakarta Sans'}}}}}});
+    new Chart(document.getElementById(`rk_${c.id}`).getContext('2d'),{type:'radar',data:{labels:['Regulatorio','Fiscal','Político','Propiedad'],datasets:[{label:'Análisis sector',data:[c.risks.reg,c.risks.fis,c.risks.pol,c.risks.prop],backgroundColor:sColors[c.spectrum]+'20',borderColor:sColors[c.spectrum],borderWidth:2,pointBackgroundColor:sColors[c.spectrum],pointRadius:4},{label:'Análisis industria',data:c.irisks?[c.irisks.reg,c.irisks.fis,c.irisks.pol,c.irisks.prop]:[0,0,0,0],backgroundColor:'rgba(14,165,233,.12)',borderColor:'#0ea5e9',borderWidth:2.5,borderDash:[5,3],pointBackgroundColor:'#0ea5e9',pointRadius:4,pointStyle:'triangle'}]},options:{responsive:true,plugins:{legend:{display:true,position:'bottom',labels:{font:{size:9,family:'Plus Jakarta Sans'},boxWidth:12,padding:8}}},scales:{r:{beginAtZero:true,max:5,ticks:{stepSize:1,display:true,font:{size:9}},grid:{color:'rgba(0,0,0,.06)'},angleLines:{color:'rgba(0,0,0,.06)'},pointLabels:{color:'#5a6477',font:{size:11,family:'Plus Jakarta Sans'}}}}}});
   });
 }
 
